@@ -101,7 +101,7 @@
       "projectType": "library",
       "root": "projects/angular-components",
       "sourceRoot": "projects/angular-components/src",
-      "prefix": "angular-components",
+      "prefix": "ff",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -111,5 +111,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
