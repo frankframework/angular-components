@@ -97,16 +97,16 @@
         }
       }
     },
-    "%PROJECT_NAME%": {
+    "angular-components": {
       "projectType": "library",
-      "root": "projects/%PROJECT_NAME%",
-      "sourceRoot": "projects/%PROJECT_NAME%/src",
-      "prefix": "%PROJECT_NAME%",
+      "root": "projects/angular-components",
+      "sourceRoot": "projects/angular-components/src",
+      "prefix": "angular-components",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/%PROJECT_NAME%/ng-package.json"
+            "project": "projects/angular-components/ng-package.json"
           }
         }
       }

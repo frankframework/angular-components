@@ -1,10 +1,10 @@
 {
-  "name": "%PROJECT_NAME%",
+  "name": "@frankframework/angular-components",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "author": "Matthbo",
-  "license": "MIT",
+  "author": "Vivy Booman",
+  "license": "Apache-2.0",
   "peerDependencies": {
     "@angular/core": "^17.0.0",
     "three": "^0.164.1"
