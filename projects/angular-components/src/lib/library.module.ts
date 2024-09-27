@@ -1,18 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-/* You can also use standalone components but for this example we export the module */
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-  declarations: [
-    /* DrawComponent */
-  ],
-  imports: [CommonModule],
-  exports: [
-    /* DrawComponent */
-  ],
-  providers: [
-    /* ThreejsService */
-  ],
+  declarations: [],
+  imports: [ButtonComponent],
+  exports: [ButtonComponent],
+  providers: [],
 })
 export class LibraryModule {}

@@ -6,6 +6,16 @@
   },
   "assets": [
     {
+      "input": "src/assets",
+      "glob": "**/*",
+      "output": "assets"
+    },
+    {
+      "input": "src",
+      "glob": "_index.scss",
+      "output": "."
+    },
+    {
       "input": "src/styles",
       "glob": "**/*.scss",
       "output": "styles"

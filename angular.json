@@ -99,6 +99,11 @@
     },
     "angular-components": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/angular-components",
       "sourceRoot": "projects/angular-components/src",
       "prefix": "ff",

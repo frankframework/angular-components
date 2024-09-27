@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Inter';
+  font-stretch: normal;
+  font-style: normal;
+  font-weight: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+  src: url('./assets/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-stretch: normal;
+  font-style: italic;
+  font-weight: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+  src: url('./assets/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
+}
+
+@forward "./styles/_light_theme.scss";

@@ -1,0 +1,10 @@
+$font-size: 16px;
+
+button {
+  border-radius: 50px;
+  border: none;
+  padding: 10px 16px 10px 16px;
+  color: $ff-light-color;
+  background-color: $ff-light-bgcolor;
+  font-size: $font-size;
+}
