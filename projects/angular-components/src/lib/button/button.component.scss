@@ -1,10 +1,15 @@
-$font-size: 16px;
-
 button {
   border-radius: 50px;
-  border: none;
-  padding: 10px 16px 10px 16px;
-  color: $ff-light-color;
-  background-color: $ff-light-bgcolor;
-  font-size: $font-size;
+  padding: 10px 16px;
+  font-family: Inter;
+  font-size: 16px;
+
+  &:active:not(:disabled) {
+    padding: 7px 13px;
+  }
+
+  > .button-content {
+    display: flex;
+    align-items: center;
+  }
 }

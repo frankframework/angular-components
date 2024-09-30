@@ -1,2 +1,38 @@
-$ff-light-color: #ffffff;
-$ff-light-bgcolor: #343434;
+$ff-color-light: #FFFFFF;
+$ff-color-dark: #1E1E1E;
+$ff-color-gray: #8A8A8A;
+$ff-bgcolor-gray: #D8D8D8;
+$ff-bgcolor-dark-gray: #343434;
+$ff-bgcolor-yellow: #FDC300;
+
+$ff-border-gray: #626262;
+$ff-border-yellow: #D3A200;
+
+ff-button>button {
+  color: $ff-color-light;
+  background-color: $ff-bgcolor-dark-gray;
+  border: initial;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $ff-color-dark;
+    background-color: $ff-bgcolor-yellow;
+  }
+
+  &:active:not(:disabled) {
+    color: $ff-color-dark;
+    background-color: $ff-bgcolor-yellow;
+    border: 3px solid $ff-border-yellow;
+  }
+
+  &:disabled {
+    color: $ff-color-gray;
+    background-color: $ff-bgcolor-gray;
+  }
+
+  &.active {
+    color: $ff-color-dark;
+    background-color: $ff-color-light;
+    border: 1px dashed $ff-border-gray;
+  }
+}

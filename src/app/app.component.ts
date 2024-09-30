@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { LibraryModule } from 'angular-components';
+import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [LibraryModule],
+  imports: [LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

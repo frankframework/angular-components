@@ -1,3 +1,5 @@
+@forward "./styles/_light_theme.scss";
+
 @font-face {
   font-family: 'Inter';
   font-stretch: normal;
@@ -13,5 +15,3 @@
   font-weight: 100, 200, 300, 400, 500, 600, 700, 800, 900;
   src: url('./assets/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype');
 }
-
-@forward "./styles/_light_theme.scss";
