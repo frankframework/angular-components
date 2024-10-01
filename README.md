@@ -7,7 +7,7 @@ A collection of reusable (small) components based on the new proposed Frank!Doc 
 ## Available Components
 | Component | Selector | Description
 | ---       | ---      | ---
-| [Button](/projects/angular-component/src/lib/button/) | &lt;ff-button&gt; | Buttons that fit the FF style & can have a toggleable active state
+| [Button](/projects/angular-components/src/lib/button/) | &lt;ff-button&gt; | Buttons that fit the FF style & can have a toggleable active state
 
 ## How to use
 Install the package from NPM (coming soon)
