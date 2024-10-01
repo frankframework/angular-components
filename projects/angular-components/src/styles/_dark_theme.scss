@@ -1,0 +1,18 @@
+@import 'variables';
+
+ff-button > button {
+  &:disabled {
+    color: $ff-color-light;
+    background-color: $ff-bgcolor-dark-gray;
+  }
+
+  &.active {
+    color: $ff-color-light;
+    background-color: $ff-bgcolor-dark-gray;
+
+    &:hover {
+      color: $ff-color-dark;
+      background-color: $ff-bgcolor-yellow;
+    }
+  }
+}

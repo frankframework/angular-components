@@ -3,12 +3,17 @@ button {
   padding: 10px 16px;
   font-family: Inter;
   font-size: 16px;
+  border: initial;
 
   &:active:not(:disabled) {
     padding: 7px 13px;
   }
 
-  > .button-content {
+  &.active {
+    padding: 9px 15px;
+  }
+
+  >.button-content {
     display: flex;
     align-items: center;
   }

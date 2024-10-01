@@ -1,4 +1,4 @@
-<button [disabled]="disabled" (click)="toggleable ? (active = !active) : null" [ngClass]="{ active: active }">
+<button [disabled]="disabled" (click)="toggle()" [ngClass]="{ active: active }">
   <span class="button-content">
     <ng-content></ng-content>
   </span>

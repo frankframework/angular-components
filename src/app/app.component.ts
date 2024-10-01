@@ -11,4 +11,8 @@ import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
 })
 export class AppComponent {
   constructor() {}
+
+  protected toggleTheme(): void {
+    document.body.classList.toggle('ff-dark-theme');
+  }
 }
