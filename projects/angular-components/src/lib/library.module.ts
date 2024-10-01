@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ButtonComponent } from './button/button.component';
 
+const components = [ButtonComponent];
+
 @NgModule({
   declarations: [],
-  imports: [ButtonComponent],
-  exports: [ButtonComponent],
+  imports: components,
+  exports: components,
   providers: [],
 })
 export class LibraryModule {}
