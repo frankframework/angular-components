@@ -1,1 +1,10 @@
-<label><!-- search icon here --><input type="text" [(ngModel)]="searchText"></label>
+<!-- eslint-disable-next-line prettier/prettier -->
+<label><ff-icon-magnifier colour="#8A8A8A"></ff-icon-magnifier><input
+    type="text"
+    placeholder="Search..."
+    [attr.value]="value"
+    [disabled]="disabled"
+    (blur)="_onBlur()"
+    (change)="_onInteractionEvent($event)"
+  /><kbd>/</kbd></label
+>

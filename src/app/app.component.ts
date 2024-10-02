@@ -10,6 +10,8 @@ import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  protected searchText: string = '';
+
   constructor() {}
 
   protected toggleTheme(): void {
