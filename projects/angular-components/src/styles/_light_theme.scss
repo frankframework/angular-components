@@ -5,6 +5,7 @@ ff-button * {
 }
 
 ff-button>button {
+  font-family: Inter;
   color: $ff-color-light;
   background-color: $ff-bgcolor-dark-gray;
 
@@ -33,5 +34,17 @@ ff-button>button {
       color: $ff-color-dark;
       background-color: $ff-bgcolor-yellow;
     }
+  }
+}
+
+ff-search>label {
+  font-family: Inter;
+  color: $ff-color-gray;
+  background-color: $ff-bgcolor-white;
+  border: 1px solid $ff-bgcolor-gray;
+
+  kbd {
+    color: $ff-color-dark-gray;
+    border: 1px solid $ff-bgcolor-gray;
   }
 }

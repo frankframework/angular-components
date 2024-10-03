@@ -16,3 +16,13 @@ ff-button > button {
     }
   }
 }
+
+ff-search>label {
+  background-color: #000;
+  border: 1px solid $ff-border-gray;
+
+  kbd {
+    color: $ff-color-dark-gray;
+    border: 1px solid $ff-border-gray;
+  }
+}

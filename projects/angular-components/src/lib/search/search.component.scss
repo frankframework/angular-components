@@ -7,6 +7,14 @@ label {
   border-radius: 50px;
 
   input {
+    font-size: inherit;
+    background: inherit;
     border: initial;
+    outline: none;
+  }
+
+  kbd {
+    padding: 2px;
+    border-radius: 3px;
   }
 }
