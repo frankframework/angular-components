@@ -2,15 +2,17 @@
 <ul class="components-list">
   <li>
     <h2>Button</h2>
-    <ff-button>Click me!</ff-button>
-    <ff-button><app-svg-add-icon [width]="16" [height]="16" colour="#fff"></app-svg-add-icon> Click me!</ff-button>
-    <ff-button active="true">Active</ff-button>
-    <ff-button toggleable="true">Toggle me!</ff-button>
-    <ff-button disabled>Disabled</ff-button>
+    <div class="components">
+      <ff-button>Click me!</ff-button>
+      <ff-button><app-svg-add-icon [width]="16" [height]="16" colour="#fff"></app-svg-add-icon> Click me!</ff-button>
+      <ff-button active="true">Active</ff-button>
+      <ff-button toggleable="true">Toggle me!</ff-button>
+      <ff-button disabled>Disabled</ff-button>
+    </div>
   </li>
   <li>
     <h2>Search</h2>
-    <ff-search [(ngModel)]="searchText"></ff-search>
+    <ff-search [(ngModel)]="searchText" style="width: 100%"></ff-search>
     <p>Search query: {{ searchText }}</p>
   </li>
 </ul>

@@ -1,10 +1,11 @@
 @import 'variables';
 
-ff-button * {
+ff-button *,
+ff-search * {
   box-sizing: border-box;
 }
 
-ff-button>button {
+ff-button > button {
   font-family: Inter;
   color: $ff-color-light;
   background-color: $ff-bgcolor-dark-gray;
@@ -29,6 +30,7 @@ ff-button>button {
     color: $ff-color-dark;
     background-color: $ff-color-light;
     border: 1px dashed $ff-border-gray;
+    gap: 8px;
 
     &:hover {
       color: $ff-color-dark;
@@ -37,14 +39,18 @@ ff-button>button {
   }
 }
 
-ff-search>label {
+ff-search > label {
   font-family: Inter;
   color: $ff-color-gray;
   background-color: $ff-bgcolor-white;
   border: 1px solid $ff-bgcolor-gray;
 
+  input {
+    color: inherit;
+  }
+
   kbd {
     color: $ff-color-dark-gray;
-    border: 1px solid $ff-bgcolor-gray;
+    border: 1px solid $ff-border-gray;
   }
 }
