@@ -1,12 +1,15 @@
 <label
-  ><ff-icon-magnifier width="24" height="24" colour="#8A8A8A"></ff-icon-magnifier
+  ><ff-icon-magnifier width="24" height="24" colour="#626262"></ff-icon-magnifier
   ><input
     type="text"
-    placeholder="Search..."
+    [placeholder]="placeholder"
     [attr.value]="value"
     [disabled]="disabled"
     (blur)="_onBlur()"
-    (change)="_onInteractionEvent($event)"
+    (input)="_onInteractionEvent($event)"
     #input
-  /><kbd>/</kbd></label
->
+  />
+  @if (!disabled) {
+    <kbd>{{ focusKey }}</kbd>
+  }
+</label>

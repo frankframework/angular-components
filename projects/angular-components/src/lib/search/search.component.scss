@@ -20,6 +20,10 @@ label {
     background: inherit;
     font-size: inherit;
     outline: none;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   kbd {
