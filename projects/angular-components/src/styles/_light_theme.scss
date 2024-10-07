@@ -1,12 +1,13 @@
 @import 'variables';
 
 ff-button *,
-ff-search * {
+ff-search *,
+ff-alert * {
+  font-family: Inter;
   box-sizing: border-box;
 }
 
 ff-button > button {
-  font-family: Inter;
   color: $ff-color-light;
   background-color: $ff-bgcolor-dark-gray;
 
@@ -40,7 +41,6 @@ ff-button > button {
 }
 
 ff-search > label {
-  font-family: Inter;
   color: $ff-color-dark-gray;
   background-color: $ff-bgcolor-white;
   border: 1px solid $ff-bgcolor-gray;
@@ -52,5 +52,30 @@ ff-search > label {
   kbd {
     color: $ff-color-dark-gray;
     border: 1px solid $ff-border-gray;
+  }
+}
+
+ff-alert > .wrapper {
+  color: $ff-color-dark;
+  border: solid $ff-border-gray;
+
+  &.info {
+    border-color: $ff-alert-info;
+    background-color: hex-with-opacity($ff-alert-info, 0.1);
+  }
+
+  &.success {
+    border-color: $ff-alert-success;
+    background-color: hex-with-opacity($ff-alert-success, 0.1);
+  }
+
+  &.warning {
+    border-color: $ff-alert-warning;
+    background-color: hex-with-opacity($ff-alert-warning, 0.1);
+  }
+
+  &.error {
+    border-color: $ff-alert-error;
+    background-color: hex-with-opacity($ff-alert-error, 0.1);
   }
 }

@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+  padding: 12px 20px;
+  border-width: 1px 1px 1px 6px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+
+  .icon {
+    flex: 0 0 auto;
+  }
+
+  span {
+    flex: 1 0 auto;
+  }
+}
+
+

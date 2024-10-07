@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IconMagnifierComponent } from './icon-magnifier.component';
+import { AlertComponent } from './alert.component';
 
-describe('IconMagnifierComponent', () => {
-  let component: IconMagnifierComponent;
-  let fixture: ComponentFixture<IconMagnifierComponent>;
+describe('AlertComponent', () => {
+  let component: AlertComponent;
+  let fixture: ComponentFixture<AlertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [IconMagnifierComponent],
+      imports: [AlertComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IconMagnifierComponent);
+    fixture = TestBed.createComponent(AlertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

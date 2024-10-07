@@ -9,3 +9,12 @@ $ff-bgcolor-yellow: #FDC300;
 
 $ff-border-gray: #626262;
 $ff-border-yellow: #D3A200;
+
+$ff-alert-info: #037CD4;
+$ff-alert-success: #00d841;
+$ff-alert-warning: #d89400;
+$ff-alert-error: #DA0004;
+
+@function hex-with-opacity($color, $opacity) {
+  @return rgba(from $color r g b / $opacity);
+}
