@@ -1,16 +1,16 @@
 <div class="wrapper" [ngClass]="type">
   @switch (type) {
     @case ('info') {
-      <ff-icon-info-circle class="icon"></ff-icon-info-circle>
+      <ff-icon-info-circle class="icon" colour="#037CD4"></ff-icon-info-circle>
     }
     @case ('success') {
-      <ff-icon-success-circle class="icon"></ff-icon-success-circle>
+      <ff-icon-success-circle class="icon" colour="#00d841"></ff-icon-success-circle>
     }
     @case ('error') {
-      <ff-icon-error-circle class="icon"></ff-icon-error-circle>
+      <ff-icon-error-circle class="icon" colour="#DA0004"></ff-icon-error-circle>
     }
     @default {
-      <ff-icon-warning-circle class="icon"></ff-icon-warning-circle>
+      <ff-icon-warning-circle class="icon" colour="#d89400"></ff-icon-warning-circle>
     }
   }
   <span><ng-content></ng-content></span>

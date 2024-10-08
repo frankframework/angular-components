@@ -55,27 +55,29 @@ ff-search > label {
   }
 }
 
+$ff-alert-light-opacity: 0.1;
+
 ff-alert > .wrapper {
   color: $ff-color-dark;
   border: solid $ff-border-gray;
 
   &.info {
     border-color: $ff-alert-info;
-    background-color: hex-with-opacity($ff-alert-info, 0.1);
+    background-color: hex-with-opacity($ff-alert-info, $ff-alert-light-opacity);
   }
 
   &.success {
     border-color: $ff-alert-success;
-    background-color: hex-with-opacity($ff-alert-success, 0.1);
+    background-color: hex-with-opacity($ff-alert-success, $ff-alert-light-opacity);
   }
 
   &.warning {
     border-color: $ff-alert-warning;
-    background-color: hex-with-opacity($ff-alert-warning, 0.1);
+    background-color: hex-with-opacity($ff-alert-warning, $ff-alert-light-opacity);
   }
 
   &.error {
     border-color: $ff-alert-error;
-    background-color: hex-with-opacity($ff-alert-error, 0.1);
+    background-color: hex-with-opacity($ff-alert-error, $ff-alert-light-opacity);
   }
 }

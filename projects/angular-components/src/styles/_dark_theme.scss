@@ -27,3 +27,25 @@ ff-search > label {
     border: 1px solid $ff-border-gray;
   }
 }
+
+$ff-alert-dark-opacity: 0.3;
+
+ff-alert > .wrapper {
+  color: $ff-color-light;
+
+  &.info {
+    background-color: hex-with-opacity($ff-alert-info, $ff-alert-dark-opacity);
+  }
+
+  &.success {
+    background-color: hex-with-opacity($ff-alert-success, $ff-alert-dark-opacity);
+  }
+
+  &.warning {
+    background-color: hex-with-opacity($ff-alert-warning, $ff-alert-dark-opacity);
+  }
+
+  &.error {
+    background-color: hex-with-opacity($ff-alert-error, $ff-alert-dark-opacity);
+  }
+}
