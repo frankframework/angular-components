@@ -1,4 +1,9 @@
 span {
   padding: 4px 8px;
-  border-radius: 6px;
+  border-radius: 8px;
+
+  &.rounded {
+    padding: 4px 16px;
+    border-radius: 50px;
+  }
 }

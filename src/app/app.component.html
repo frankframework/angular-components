@@ -28,7 +28,7 @@
       <ff-alert type="error">Error</ff-alert>
       <ff-alert style="width: 100%">This is the default alert with a width of 100%, do you feel alerted yet?</ff-alert>
       <ff-alert type="info" style="width: 100%">
-        <p>
+        <p style="margin-top: 0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dui non feugiat condimentum. Morbi quis
           odio odio sagittis, viverra odio sit amet, fermentum felis. Nullam mollis, erat non pellentesque vestibulum,
           nisi erat varius dui, eget facilisis arcu arcu ac libero. Aliquam erat volutpat. Aenean lobortis vulputate
@@ -51,12 +51,16 @@
   <li>
     <h2>Chip</h2>
     <div class="components">
-      <ff-chip>C</ff-chip>
+      <ff-chip rounded>C</ff-chip>
       <ff-chip>Label</ff-chip>
+      <ff-chip colour="#345678" rounded>Colour!</ff-chip>
+      <ff-chip colour="dd3bd0">More colour!</ff-chip>
     </div>
   </li>
 </ul>
 
 <div class="options">
-  <ff-button (click)="toggleTheme()">Dark/Light</ff-button>
+  <ff-button (click)="toggleTheme()"
+    ><span class="yellow-dark">Dark</span> / <span class="yellow-light">Light</span></ff-button
+  >
 </div>
