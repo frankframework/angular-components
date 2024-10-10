@@ -1,6 +1,6 @@
 # Angular Components
 
-A collection of reusable (small) components based on the new proposed Frank!Doc designs.
+A collection of reusable components designed for use in Frank!Framework projects, based on new proposed FF!Doc designs.
 
 ![frank-framework-github-banner](banner.png)
 
@@ -30,7 +30,7 @@ The dark theme is set up to work whenever `<body class="ff-dark-theme">` is pres
 But if you'd like to have it work under a custom classname then you should add this to your `styles.scss`:
 ```scss
 body.custom-name {
-  @import '@frankframework/angular-components/styles/dark_theme';
+  @import '~@frankframework/angular-components/styles/dark_theme';
 }
 ```
 
@@ -39,6 +39,12 @@ See the [template description](https://github.com/frankframework/angular-library
 
 ### Build
 Run `npm run build` to build the library project using ng-packagr. The build artifacts will be stored in the `dist/angular-components/` directory.
+
+### Watch
+Run `npm run watch` to automatically build the components and watch for changes, useful when using `ng serve` or `npm start` to run the playground application.
+
+### Serve
+Run `npm start` or `ng serve` to serve the playground application in which you can test the components artifacts, it's recommended to also use `npm run watch` as to build any new changes made to the components themselves.
 
 ### Publishing
 Run `npm publish` in the `dist/angular-components/` directory in order to publish the library to a package registry.
