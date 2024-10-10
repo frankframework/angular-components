@@ -97,19 +97,27 @@
         }
       }
     },
-    "%PROJECT_NAME%": {
+    "angular-components": {
       "projectType": "library",
-      "root": "projects/%PROJECT_NAME%",
-      "sourceRoot": "projects/%PROJECT_NAME%/src",
-      "prefix": "%PROJECT_NAME%",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/angular-components",
+      "sourceRoot": "projects/angular-components/src",
+      "prefix": "ff",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/%PROJECT_NAME%/ng-package.json"
+            "project": "projects/angular-components/ng-package.json"
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

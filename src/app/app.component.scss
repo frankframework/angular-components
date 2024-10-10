@@ -1,0 +1,31 @@
+h2 {
+  margin-top: 0;
+}
+
+ul.components-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    padding: 16px 0;
+    border-top: 1px solid #8A8A8A;
+
+    .components {
+      display: flex;
+      align-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      > * {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
+
+.options {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}

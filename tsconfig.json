@@ -23,8 +23,8 @@
       "dom"
     ],
     "paths": {
-      "example-lib": [
-        "./dist/example-lib"
+      "angular-components": [
+        "./dist/angular-components"
       ]
     }
   },

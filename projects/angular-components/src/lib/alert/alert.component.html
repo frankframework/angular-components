@@ -1,0 +1,27 @@
+<div class="ff-alert" [ngClass]="type">
+  @switch (type) {
+    @case ('info') {
+      <ff-icon-info-circle class="icon" colour="#037CD4" [width]="iconSize" [height]="iconSize"></ff-icon-info-circle>
+    }
+    @case ('success') {
+      <ff-icon-success-circle
+        class="icon"
+        colour="#00d841"
+        [width]="iconSize"
+        [height]="iconSize"
+      ></ff-icon-success-circle>
+    }
+    @case ('error') {
+      <ff-icon-error-circle class="icon" colour="#DA0004" [width]="iconSize" [height]="iconSize"></ff-icon-error-circle>
+    }
+    @default {
+      <ff-icon-warning-circle
+        class="icon"
+        colour="#d89400"
+        [width]="iconSize"
+        [height]="iconSize"
+      ></ff-icon-warning-circle>
+    }
+  }
+  <span><ng-content></ng-content></span>
+</div>

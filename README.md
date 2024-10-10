@@ -1,31 +1,50 @@
-# Angular Library Template
+# Angular Components
 
-A template repository for Angular libraries
+A collection of reusable components designed for use in Frank!Framework projects, based on new proposed FF!Doc designs.
 
 ![frank-framework-github-banner](banner.png)
 
+## Available Components
+| Component | Selector | Description
+| ---       | ---      | ---
+| [Alert](/projects/angular-components/src/lib/alert/) | &lt;ff-alert&gt; | Alert the user, useful for forms, documentation or to give a warning for anything.
+| [Button](/projects/angular-components/src/lib/button/) | &lt;ff-button&gt; | Buttons that fit the FF style & can have a toggleable active state
+| [Chip](/projects/angular-components/src/lib/chip/) | &lt;ff-chip&gt; | A stylized border around a word or short text, most likely used for labeling
+| [Search](/projects/angular-components/src/lib/search/) | &lt;ff-search&gt; | A search field that works like any other form input but doesn't need to be in a form
+
 ## How to use
-Find and replace all `%PROJECT_NAME%` with your project name, you should also rename the `/projects/PROJECT_NAME` folder and update `.eslintrc.js > parserOptions > project` property accordingly.
+Install the package from NPM (coming soon)
+```sh
+npm install @frankframework/angular-components
+```
 
-> [!IMPORTANT]
-> Make sure to update angular to the latest version
+Then import one of the components that you'd like to use or import the `LibraryModule` into the component(s) that needs to use it.
 
-This template repository consists of 2 angular projects which split the responsibility of developing vs publishing only what's needed:
-  - The main project (angular-lib-poc in this case)
-    - Lives in `<root>/src` like any other normal angular project
-    - Is just a regular angular project used for testing the library project
-    - Uses all the default configs & files setup in the root
-    - This project won't be any part of what is published to NPM
-  - The library project
-    - Lives in `projects/PROJECT_NAME` and is the actual library you can put on NPM
-    - Is defined as project type `library` in the `angular.json`
-    - Has its own `package.json` & `tsconfig` that extends the main one
-    - Has an `ng-package.json`  for ng-packagr to use
+Import the stylesheet into `styles.scss` using:
+```scss
+@use '~@frankframework/angular-components';
+```
 
-Pay attention to `/package.json`, `/angular.json` & `projects/example-lib/package.json` since they define how the development environment will be set up compared to what will be published onto NPM.
+### Dark theme
+The dark theme is set up to work whenever `<body class="ff-dark-theme">` is present on the HTML document.
+But if you'd like to have it work under a custom classname then you should add this to your `styles.scss`:
+```scss
+body.custom-name {
+  @import '~@frankframework/angular-components/styles/dark_theme';
+}
+```
+
+## Development
+See the [template description](https://github.com/frankframework/angular-library-template) and the [Angular CLI documentation](https://angular.dev/tools/cli) for more information.
 
 ### Build
-Run `npx ng build` to build the library project using ng-packagr. The build artifacts will be stored in the `dist/%PROJECT_NAME%/` directory.
+Run `npm run build` to build the library project using ng-packagr. The build artifacts will be stored in the `dist/angular-components/` directory.
+
+### Watch
+Run `npm run watch` to automatically build the components and watch for changes, useful when using `ng serve` or `npm start` to run the playground application.
+
+### Serve
+Run `npm start` or `ng serve` to serve the playground application in which you can test the components artifacts, it's recommended to also use `npm run watch` as to build any new changes made to the components themselves.
 
 ### Publishing
-Run `npm publish` in the `dist/%PROJECT_NAME%/` directory in order to publish the library to a package registry.
+Run `npm publish` in the `dist/angular-components/` directory in order to publish the library to a package registry.

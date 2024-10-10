@@ -1,0 +1,51 @@
+@import 'variables';
+
+ff-button > button {
+  &:disabled {
+    color: $ff-color-gray;
+    background-color: $ff-bgcolor-dark-gray;
+  }
+
+  &.active {
+    color: $ff-color-light;
+    background-color: $ff-bgcolor-dark-gray;
+
+    &:hover {
+      color: $ff-color-dark;
+      background-color: $ff-bgcolor-yellow;
+    }
+  }
+}
+
+ff-search > label {
+  color: $ff-color-gray;
+  background-color: #000;
+  border: 1px solid $ff-border-gray;
+
+  kbd {
+    color: $ff-color-dark-gray;
+    border: 1px solid $ff-border-gray;
+  }
+}
+
+$ff-alert-dark-opacity: 0.3;
+
+ff-alert > .ff-alert {
+  color: $ff-color-light;
+
+  &.info {
+    background-color: hex-with-opacity($ff-alert-info, $ff-alert-dark-opacity);
+  }
+
+  &.success {
+    background-color: hex-with-opacity($ff-alert-success, $ff-alert-dark-opacity);
+  }
+
+  &.warning {
+    background-color: hex-with-opacity($ff-alert-warning, $ff-alert-dark-opacity);
+  }
+
+  &.error {
+    background-color: hex-with-opacity($ff-alert-error, $ff-alert-dark-opacity);
+  }
+}

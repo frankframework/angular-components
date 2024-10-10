@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@use '../dist/angular-components';
+
+.yellow-dark {
+  color: inherit;
+}
+.yellow-light {
+  color: #ffdb66;
+}
+
+body.ff-dark-theme {
+  // @import '../dist/angular-components/styles/dark_theme';
+
+  color: #fff;
+  background-color: #1E1E1E;
+
+  .yellow-dark {
+    color: #ffdb66;
+  }
+  .yellow-light {
+    color: inherit;
+  }
+}

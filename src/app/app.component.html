@@ -1,4 +1,66 @@
-<h1>Example Lib Rendering Test</h1>
-<div #container>
-  <app-draw></app-draw>
+<h1>FF Components</h1>
+<ul class="components-list">
+  <li>
+    <h2>Button</h2>
+    <div class="components">
+      <ff-button>Click me!</ff-button>
+      <ff-button><app-svg-add-icon [width]="16" [height]="16" colour="#fff"></app-svg-add-icon> Click me!</ff-button>
+      <ff-button active="true">Active</ff-button>
+      <ff-button toggleable="true">Toggle me!</ff-button>
+      <ff-button disabled>Disabled</ff-button>
+    </div>
+  </li>
+  <li>
+    <h2>Search</h2>
+    <div class="components">
+      <ff-search [(ngModel)]="searchText" style="width: 100%"></ff-search>
+      <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%"></ff-search>
+      <ff-search placeholder="Disabled" style="width: 100%" disabled></ff-search>
+    </div>
+    <p>Search query: {{ searchText }}</p>
+  </li>
+  <li>
+    <h2>Alert</h2>
+    <div class="components">
+      <ff-alert type="info">Info</ff-alert>
+      <ff-alert type="success">Success</ff-alert>
+      <ff-alert type="warning">Warning</ff-alert>
+      <ff-alert type="error">Error</ff-alert>
+      <ff-alert style="width: 100%">This is the default alert with a width of 100%, do you feel alerted yet?</ff-alert>
+      <ff-alert type="info" style="width: 100%">
+        <p style="margin-top: 0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec blandit dui non feugiat condimentum. Morbi quis
+          odio odio sagittis, viverra odio sit amet, fermentum felis. Nullam mollis, erat non pellentesque vestibulum,
+          nisi erat varius dui, eget facilisis arcu arcu ac libero. Aliquam erat volutpat. Aenean lobortis vulputate
+          massa ut ultricies. Morbi quis malesuada neque. Fusce ut mi at dolor molestie malesuada quis a lectus. Morbi
+          suscipit suscipit blandit lectus in iaculis. Aliquam eget vehicula quam. Morbi vel imperdiet est. Proin eu
+          aliquam Suspendisse vitae enim vel ipsum molestie egestas. Morbi hendrerit nisl turpis. Integer et lorem
+          blandit, ullamcorper dolor non, euismod libero. Phasellus a dui erat. Morbi ac mi elit.
+        </p>
+        <p>
+          Pellentesque tempus metus ut tortor volutpat, vel efficitur leo eleifend. Nulla suscipit libero tincidunt
+          tincidunt blandit. Proin a sagittis velit, scelerisque molestie leo. Pellentesque in ante in sapien euismod
+          feugiat. Phasellus tempus nunc vitae sem auctor, a fringilla erat ultrices. Pellentesque a gravida quam.
+          Mauris nec nisi nulla. Duis imperdiet urna eget condimentum malesuada. Aliquam placerat massa quis posuere
+          auctor. Nulla sed egestas eros, suscipit est. Maecenas consectetur lacus vel congue elementum. Donec dignissim
+          leo sit amet nulla dignissim luctus.
+        </p></ff-alert
+      >
+    </div>
+  </li>
+  <li>
+    <h2>Chip</h2>
+    <div class="components">
+      <ff-chip rounded>C</ff-chip>
+      <ff-chip>Label</ff-chip>
+      <ff-chip colour="#345678" rounded>Colour!</ff-chip>
+      <ff-chip colour="dd3bd0">More colour!</ff-chip>
+    </div>
+  </li>
+</ul>
+
+<div class="options">
+  <ff-button (click)="toggleTheme()"
+    ><span class="yellow-dark">Dark</span> / <span class="yellow-light">Light</span></ff-button
+  >
 </div>

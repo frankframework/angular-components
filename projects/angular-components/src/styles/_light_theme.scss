@@ -1,0 +1,93 @@
+@import 'variables';
+
+ff-button *,
+ff-search *,
+ff-alert *,
+ff-chip * {
+  font-family: Inter;
+  box-sizing: border-box;
+}
+
+ff-button > button {
+  color: $ff-color-light;
+  background-color: $ff-bgcolor-dark-gray;
+
+  &:hover {
+    color: $ff-color-dark;
+    background-color: $ff-bgcolor-yellow;
+  }
+
+  &:active:not(:disabled) {
+    color: $ff-color-dark;
+    background-color: $ff-bgcolor-yellow;
+    border: 3px solid $ff-border-yellow;
+  }
+
+  &:disabled {
+    color: $ff-color-gray;
+    background-color: $ff-bgcolor-gray;
+  }
+
+  &.active {
+    color: $ff-color-dark;
+    background-color: $ff-color-light;
+    border: 1px dashed $ff-border-gray;
+    gap: 8px;
+
+    &:hover {
+      color: $ff-color-dark;
+      background-color: $ff-bgcolor-yellow;
+    }
+  }
+}
+
+ff-search > label {
+  color: $ff-color-dark-gray;
+  background-color: $ff-bgcolor-white;
+  border: 1px solid $ff-bgcolor-gray;
+
+  input {
+    color: inherit;
+  }
+
+  kbd {
+    color: $ff-color-dark-gray;
+    border: 1px solid $ff-border-gray;
+  }
+}
+
+$ff-alert-light-opacity: 0.1;
+$ff-alert-light-border-opacity: 0.2;
+
+ff-alert > .ff-alert {
+  color: $ff-color-dark;
+  border: solid $ff-border-gray;
+
+  &.info {
+    $light-border-side: hex-with-opacity($ff-alert-info, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-info;
+    background-color: hex-with-opacity($ff-alert-info, $ff-alert-light-opacity);
+  }
+
+  &.success {
+    $light-border-side: hex-with-opacity($ff-alert-success, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-success;
+    background-color: hex-with-opacity($ff-alert-success, $ff-alert-light-opacity);
+  }
+
+  &.warning {
+    $light-border-side: hex-with-opacity($ff-alert-warning, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-warning;
+    background-color: hex-with-opacity($ff-alert-warning, $ff-alert-light-opacity);
+  }
+
+  &.error {
+    $light-border-side: hex-with-opacity($ff-alert-error, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-error;
+    background-color: hex-with-opacity($ff-alert-error, $ff-alert-light-opacity);
+  }
+}
+
+ff-chip > span {
+  border: 1px solid $ff-border-gray;
+}
