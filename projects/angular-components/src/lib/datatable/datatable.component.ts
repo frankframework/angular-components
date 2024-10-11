@@ -29,6 +29,11 @@ export type DataTableEntryInfo = {
   totalEntries: number;
 };
 
+export type DataTablePaginationInfo = {
+  currentPage: number;
+  totalPages: number;
+};
+
 export type DataTableServerRequestInfo = {
   size: number;
   offset: number;
@@ -59,6 +64,8 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   protected totalEntries: number = 0;
   protected minPageEntry: number = 0;
   protected maxPageEntry: number = 0;
+  protected currentPage: number = 1;
+  protected totalPages: number = 0;
 
   protected get displayedColumns(): string[] {
     return this.displayColumns.map((column) => column.name);
@@ -68,13 +75,21 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.datasource) {
-      const subscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
-        this.totalEntries = entriesInfo.totalEntries;
-        this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
-        this.minPageEntry = entriesInfo.minPageEntry;
-        this.maxPageEntry = entriesInfo.maxPageEntry;
+      setTimeout(() => {
+        // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
+        const entriesSubscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
+          this.totalEntries = entriesInfo.totalEntries;
+          this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
+          this.minPageEntry = entriesInfo.minPageEntry;
+          this.maxPageEntry = entriesInfo.maxPageEntry;
+        });
+        this.datasourceSubscription.add(entriesSubscription);
+        const paginationSubscription = this.datasource.getPaginationInfo().subscribe((paginationInfo) => {
+          this.currentPage = paginationInfo.currentPage;
+          this.totalPages = paginationInfo.totalPages;
+        });
+        this.datasourceSubscription.add(paginationSubscription);
       });
-      this.datasourceSubscription.add(subscription);
     }
   }
 
@@ -116,11 +131,14 @@ export class DataTableDataSource<T> extends DataSource<T> {
     totalFilteredEntries: 0,
     totalEntries: 0,
   });
+  private _paginationInfo = new BehaviorSubject<DataTablePaginationInfo>({
+    currentPage: 1,
+    totalPages: 0,
+  });
+  private _paginationInfo$ = this._paginationInfo.asObservable();
   private _entriesInfo$ = this._entriesInfo.asObservable();
 
   private filteredData: T[] = [];
-  private _currentPage: number = 1;
-  private _totalPages: number = 0;
   private serverRequestId: number = -1;
   private serverRequestFn?: (value: DataTableServerRequestInfo) => PromiseLike<DataTableServerResponseInfo<T>>;
 
@@ -157,11 +175,11 @@ export class DataTableDataSource<T> extends DataSource<T> {
   }
 
   get totalPages(): number {
-    return this._totalPages;
+    return this._paginationInfo.getValue().totalPages;
   }
 
   get currentPage(): number {
-    return this._currentPage;
+    return this._paginationInfo.getValue().currentPage;
   }
 
   connect(): Observable<T[]> {
@@ -177,8 +195,12 @@ export class DataTableDataSource<T> extends DataSource<T> {
     return this._entriesInfo$;
   }
 
+  getPaginationInfo(): Observable<DataTablePaginationInfo> {
+    return this._paginationInfo$;
+  }
+
   updatePage(page: number): void {
-    this._currentPage = page;
+    this._paginationInfo.next({ currentPage: page, totalPages: this.totalPages });
     this.updateRenderedData(this.data);
   }
 
@@ -206,13 +228,16 @@ export class DataTableDataSource<T> extends DataSource<T> {
   private updateDataFromEndpoint(): void {
     Promise.resolve<DataTableServerRequestInfo>({
       size: this.options.size,
-      offset: (this._currentPage - 1) * this.options.size,
+      offset: (this.currentPage - 1) * this.options.size,
       sort: 'asc',
     })
       .then(this.serverRequestFn)
       .then((response) => {
         this.data = response.data;
-        this._totalPages = Math.ceil(response.totalEntries / this.options.size);
+        this._paginationInfo.next({
+          currentPage: this.currentPage,
+          totalPages: Math.ceil(response.totalEntries / this.options.size),
+        });
         this._renderData.next(this.data);
         this._entriesInfo.next({
           minPageEntry: response.offset + 1,
@@ -228,7 +253,7 @@ export class DataTableDataSource<T> extends DataSource<T> {
   }
 
   private paginateData(data: T[]): T[] {
-    const currentStart = (this._currentPage - 1) * this.options.size;
+    const currentStart = (this.currentPage - 1) * this.options.size;
     const paginatedData = data.slice(currentStart, currentStart + this.options.size);
     this._renderData.next(paginatedData);
     this._entriesInfo.next({
@@ -242,7 +267,10 @@ export class DataTableDataSource<T> extends DataSource<T> {
 
   private filterData(data: T[]): T[] {
     this.filteredData = this.filter === '' ? data : data.filter((row) => this.filterPredicate(row, this.filter));
-    this._totalPages = Math.ceil(this.filteredData.length / this.options.size);
+    this._paginationInfo.next({
+      currentPage: this.currentPage,
+      totalPages: Math.ceil(this.filteredData.length / this.options.size),
+    });
     this._renderData.next(this.filteredData);
     return this.filteredData;
   }

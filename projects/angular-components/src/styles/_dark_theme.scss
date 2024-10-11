@@ -49,3 +49,7 @@ ff-alert > .ff-alert {
     background-color: hex-with-opacity($ff-alert-error, $ff-alert-dark-opacity);
   }
 }
+
+ff-datatable>.dt-wrapper {
+  color: $ff-color-light;
+}
