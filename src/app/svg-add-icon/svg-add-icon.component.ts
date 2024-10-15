@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { IconBaseComponent } from 'angular-components';
 
 @Component({
   selector: 'app-svg-add-icon',
@@ -9,10 +10,9 @@ import { Component, Input } from '@angular/core';
     :host {
       display: contents;
     }
+    svg {
+      flex: 0 0 auto;
+    }
   `,
 })
-export class SvgAddIconComponent {
-  @Input() width: number = 24;
-  @Input() height: number = 24;
-  @Input() colour: string = '#000';
-}
+export class SvgAddIconComponent extends IconBaseComponent {}
