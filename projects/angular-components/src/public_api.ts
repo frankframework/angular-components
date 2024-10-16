@@ -4,3 +4,8 @@ export * from './lib/button/button.component';
 export * from './lib/search/search.component';
 export * from './lib/alert/alert.component';
 export * from './lib/chip/chip.component';
+export * from './lib/datatable/datatable.component';
+export * from './lib/th-sortable.directive';
+
+// helper classes
+export * from './lib/icons/icon-base';
