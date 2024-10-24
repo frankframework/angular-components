@@ -10,6 +10,7 @@ import { NgClass, NgStyle } from '@angular/common';
 })
 export class ChipComponent {
   @Input({ transform: booleanAttribute }) rounded: boolean = false;
+  @Input({ transform: booleanAttribute }) slim: boolean = false;
 
   private bgColour: string = 'rgb(0, 0, 0)';
   private _colour?: string;
