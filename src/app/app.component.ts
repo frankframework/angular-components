@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataTableColumn, DataTableDataSource, LibraryModule } from 'angular-components';
 import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
 import { FormsModule } from '@angular/forms';
-import { CheckboxComponent } from '../../projects/angular-components/src/lib/checkbox/checkbox.component';
 
 type TableData = {
   title: string;
@@ -13,12 +12,13 @@ type TableData = {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule, LibraryModule, SvgAddIconComponent, CheckboxComponent],
+  imports: [FormsModule, LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   protected searchText: string = '';
+  protected checked: boolean = false;
   protected datasource: DataTableDataSource<TableData> = new DataTableDataSource();
   protected displayedColumns: DataTableColumn<TableData>[] = [
     { name: 'title', displayName: 'Title', property: 'title' },
