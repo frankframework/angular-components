@@ -28,6 +28,15 @@ label {
         display: block;
       }
     }
+
+    &:disabled + span.check-box {
+      background-color: #D8D8D8;
+      border-color: #D8D8D8;
+    }
+
+    &:disabled:checked + span.check-box > .check-mark {
+      display: block;
+    }
   }
 
   span.check-box {

@@ -14,8 +14,12 @@
     <h2>Checkbox</h2>
     <div class="components">
       <ff-checkbox [(ngModel)]="checked"></ff-checkbox>
-      <p>Checked: {{ checked }}</p>
+      <ff-checkbox [(ngModel)]="checked2"></ff-checkbox>
+      <ff-checkbox checked></ff-checkbox>
+      <ff-checkbox disabled></ff-checkbox>
+      <ff-checkbox disabled checked></ff-checkbox>
     </div>
+    <p>Checkbox 1: {{ checked }}, checkbox 2: {{ checked2 }}</p>
   </li>
   <li>
     <h2>Search</h2>

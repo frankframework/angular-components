@@ -19,6 +19,7 @@ type TableData = {
 export class AppComponent implements OnInit {
   protected searchText: string = '';
   protected checked: boolean = false;
+  protected checked2: boolean = true;
   protected datasource: DataTableDataSource<TableData> = new DataTableDataSource();
   protected displayedColumns: DataTableColumn<TableData>[] = [
     { name: 'title', displayName: 'Title', property: 'title' },
