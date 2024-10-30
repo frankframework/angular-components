@@ -43,16 +43,24 @@ ff-button > button {
 }
 
 ff-search > label {
-  color: $ff-color-dark-gray;
+  color: $ff-color-gray;
   background-color: $ff-bgcolor-white;
   border: 1px solid $ff-bgcolor-gray;
 
+  &.disabled {
+    background-color: $ff-bgcolor-gray;
+  }
+
   input {
     color: inherit;
+
+    &::placeholder {
+      color: hex-with-opacity($ff-color-gray, 0.75);
+    }
   }
 
   kbd {
-    color: $ff-color-dark-gray;
+    color: $ff-color-gray;
     border: 1px solid $ff-border-gray;
   }
 }

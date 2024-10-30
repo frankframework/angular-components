@@ -18,13 +18,11 @@ ff-button > button {
 }
 
 ff-search > label {
-  color: $ff-color-gray;
   background-color: #000;
   border: 1px solid $ff-border-gray;
 
-  kbd {
-    color: $ff-color-dark-gray;
-    border: 1px solid $ff-border-gray;
+  &.disabled {
+    background-color: $ff-bgcolor-dark-gray;
   }
 }
 
