@@ -1,4 +1,4 @@
-<label>
+<label (click)="_onClick($event)">
   <span class="content"><ng-content></ng-content></span>
   <input type="checkbox" [disabled]="disabled" [(ngModel)]="checked" (ngModelChange)="_onChange(this.checked)" />
   <span class="check-box"

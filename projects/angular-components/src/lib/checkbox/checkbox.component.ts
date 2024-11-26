@@ -46,4 +46,10 @@ export class CheckboxComponent implements ControlValueAccessor {
   protected _onBlur(): void {
     Promise.resolve().then(() => this._onTouched());
   }
+
+  protected _onClick(event: MouseEvent): void {
+    if ((event.target as HTMLElement)?.nodeName !== 'INPUT') {
+      event.stopPropagation();
+    }
+  }
 }

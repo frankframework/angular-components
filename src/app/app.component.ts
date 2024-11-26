@@ -50,6 +50,10 @@ export class AppComponent implements OnInit {
     ];
   }
 
+  protected debug(...data: unknown[]): void {
+    console.log(data);
+  }
+
   protected toggleTheme(): void {
     document.body.classList.toggle('ff-dark-theme');
   }
