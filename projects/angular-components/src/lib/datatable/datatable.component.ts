@@ -75,8 +75,8 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.datasource) {
+      // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
       setTimeout(() => {
-        // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
         const entriesSubscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
           this.totalEntries = entriesInfo.totalEntries;
           this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
@@ -108,10 +108,6 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
 
   updatePage(pageNumber: number): void {
     this.datasource.updatePage(pageNumber);
-  }
-
-  checkIfNotDate(column: DataTableColumn<T>): boolean {
-    return !column.className?.includes('date');
   }
 }
 
