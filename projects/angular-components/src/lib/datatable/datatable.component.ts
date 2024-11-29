@@ -68,7 +68,7 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   protected totalPages: number = 0;
 
   protected get displayedColumns(): string[] {
-    return this.displayColumns.map(({name}) => name);
+    return this.displayColumns.map(({ name }) => name);
   }
 
   private datasourceSubscription: Subscription = new Subscription();
