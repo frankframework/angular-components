@@ -74,23 +74,21 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   private datasourceSubscription: Subscription = new Subscription();
 
   ngAfterViewInit(): void {
-    if (this.datasource) {
-      // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
-      setTimeout(() => {
-        const entriesSubscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
-          this.totalEntries = entriesInfo.totalEntries;
-          this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
-          this.minPageEntry = entriesInfo.minPageEntry;
-          this.maxPageEntry = entriesInfo.maxPageEntry;
-        });
-        this.datasourceSubscription.add(entriesSubscription);
-        const paginationSubscription = this.datasource.getPaginationInfo().subscribe((paginationInfo) => {
-          this.currentPage = paginationInfo.currentPage;
-          this.totalPages = paginationInfo.totalPages;
-        });
-        this.datasourceSubscription.add(paginationSubscription);
+    // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() => {
+      const entriesSubscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
+        this.totalEntries = entriesInfo.totalEntries;
+        this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
+        this.minPageEntry = entriesInfo.minPageEntry;
+        this.maxPageEntry = entriesInfo.maxPageEntry;
       });
-    }
+      this.datasourceSubscription.add(entriesSubscription);
+      const paginationSubscription = this.datasource.getPaginationInfo().subscribe((paginationInfo) => {
+        this.currentPage = paginationInfo.currentPage;
+        this.totalPages = paginationInfo.totalPages;
+      });
+      this.datasourceSubscription.add(paginationSubscription);
+    });
   }
 
   ngOnDestroy(): void {

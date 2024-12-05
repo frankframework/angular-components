@@ -33,8 +33,8 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
   @Input() value: string = '';
   @Input() placeholder: string = 'Search...';
   @Input() focusKey: string = '/';
+  @Input({ transform: booleanAttribute }) focusKeyEnabled: boolean = true;
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input({ transform: booleanAttribute }) noFocus: boolean = false;
   @Input({ transform: booleanAttribute }) slim: boolean = false;
   @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
 
@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
       this._onChange(value);
     });
 
-    if (!this.noFocus) {
+    if (this.focusKeyEnabled) {
       window.addEventListener('keyup', this._onKeyEvent.bind(this), true);
     }
   }
@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
   ngOnDestroy(): void {
     this.searchSubject.complete();
 
-    if (!this.noFocus) {
+    if (this.focusKeyEnabled) {
       window.removeEventListener('keyup', this._onKeyEvent, true);
     }
   }

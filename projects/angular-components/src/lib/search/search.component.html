@@ -9,7 +9,7 @@
     (input)="_onInteractionEvent($event)"
     #input
   />
-  @if (!noFocus && !disabled) {
+  @if (focusKeyEnabled && !disabled) {
     <kbd>{{ focusKey }}</kbd>
   }
 </label>
