@@ -10,15 +10,26 @@ label {
   align-items: center;
   gap: 8px;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 500;
 
+  &.slim {
+    font-size: 14px;
+
+    kbd {
+      padding: 2px;
+      font-size: 11px;
+    }
+  }
+
   input {
+    width: 100%;
     flex: 1 1 auto;
     padding: 0;
     border: initial;
     background: inherit;
     font-size: inherit;
+    font-weight: 500;
     outline: none;
 
     &:disabled {
@@ -27,7 +38,9 @@ label {
   }
 
   kbd {
-    padding: 2px;
+    padding: 3px;
     border-radius: 3px;
+    font-size: 22px;
+    line-height: 1;
   }
 }

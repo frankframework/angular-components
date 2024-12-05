@@ -18,13 +18,11 @@ ff-button > button {
 }
 
 ff-search > label {
-  color: $ff-color-gray;
   background-color: #000;
   border: 1px solid $ff-border-gray;
 
-  kbd {
-    color: $ff-color-dark-gray;
-    border: 1px solid $ff-border-gray;
+  &.disabled {
+    background-color: $ff-bgcolor-dark-gray;
   }
 }
 
@@ -48,4 +46,8 @@ ff-alert > .ff-alert {
   &.error {
     background-color: hex-with-opacity($ff-alert-error, $ff-alert-dark-opacity);
   }
+}
+
+ff-datatable>.dt-wrapper {
+  color: $ff-color-light;
 }

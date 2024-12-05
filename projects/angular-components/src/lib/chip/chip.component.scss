@@ -1,9 +1,18 @@
 span {
+  display: inline-block;
   padding: 4px 8px;
   border-radius: 8px;
 
   &.rounded {
     padding: 4px 16px;
     border-radius: 50px;
+  }
+
+  &.slim {
+    line-height: 1;
+
+    &.rounded {
+      padding: 4px 8px;
+    }
   }
 }

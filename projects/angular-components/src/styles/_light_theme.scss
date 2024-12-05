@@ -3,7 +3,8 @@
 ff-button *,
 ff-search *,
 ff-alert *,
-ff-chip * {
+ff-chip *,
+ff-datatable * {
   font-family: Inter;
   box-sizing: border-box;
 }
@@ -42,16 +43,24 @@ ff-button > button {
 }
 
 ff-search > label {
-  color: $ff-color-dark-gray;
+  color: $ff-color-gray;
   background-color: $ff-bgcolor-white;
   border: 1px solid $ff-bgcolor-gray;
 
+  &.disabled {
+    background-color: $ff-bgcolor-gray;
+  }
+
   input {
     color: inherit;
+
+    &::placeholder {
+      color: hex-with-opacity($ff-color-gray, 0.75);
+    }
   }
 
   kbd {
-    color: $ff-color-dark-gray;
+    color: $ff-color-gray;
     border: 1px solid $ff-border-gray;
   }
 }
@@ -90,4 +99,18 @@ ff-alert > .ff-alert {
 
 ff-chip > span {
   border: 1px solid $ff-border-gray;
+}
+
+ff-datatable > .dt-wrapper {
+  color: $ff-color-dark;
+
+  table {
+    margin-top: 4px;
+    border-collapse: collapse;
+  }
+
+  & th, & td {
+    border: 1px solid $ff-border-gray;
+    border-width: 1px 0;
+  }
 }

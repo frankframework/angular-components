@@ -11,11 +11,25 @@
     </div>
   </li>
   <li>
+    <h2>Checkbox</h2>
+    <div class="components">
+      <ff-checkbox [(ngModel)]="checked"></ff-checkbox>
+      <ff-checkbox [(ngModel)]="checked2"></ff-checkbox>
+      <ff-checkbox checked></ff-checkbox>
+      <ff-checkbox disabled></ff-checkbox>
+      <ff-checkbox disabled checked></ff-checkbox>
+    </div>
+    <p>Checkbox 1: {{ checked }}, checkbox 2: {{ checked2 }}</p>
+  </li>
+  <li>
     <h2>Search</h2>
     <div class="components">
       <ff-search [(ngModel)]="searchText" style="width: 100%"></ff-search>
-      <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%"></ff-search>
-      <ff-search placeholder="Disabled" style="width: 100%" disabled></ff-search>
+      <div class="separator">
+        <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%"></ff-search>
+        <ff-search placeholder="Disabled" style="width: 100%" disabled></ff-search>
+        <ff-search placeholder="Slimmed down" [focusKeyEnabled]="false" slim style="width: 100%"></ff-search>
+      </div>
     </div>
     <p>Search query: {{ searchText }}</p>
   </li>
@@ -44,17 +58,27 @@
           Mauris nec nisi nulla. Duis imperdiet urna eget condimentum malesuada. Aliquam placerat massa quis posuere
           auctor. Nulla sed egestas eros, suscipit est. Maecenas consectetur lacus vel congue elementum. Donec dignissim
           leo sit amet nulla dignissim luctus.
-        </p></ff-alert
-      >
+        </p>
+      </ff-alert>
     </div>
   </li>
   <li>
     <h2>Chip</h2>
     <div class="components">
-      <ff-chip rounded>C</ff-chip>
+      <ff-chip rounded>L</ff-chip>
       <ff-chip>Label</ff-chip>
       <ff-chip colour="#345678" rounded>Colour!</ff-chip>
       <ff-chip colour="dd3bd0">More colour!</ff-chip>
+      <ff-chip colour="#345678" rounded slim>Slimmed down</ff-chip>
+      <ff-chip colour="FDC300" slim>Slimmed down</ff-chip>
+      <ff-chip slim>C</ff-chip>
+      <ff-chip slim rounded>C</ff-chip>
+    </div>
+  </li>
+  <li>
+    <h2>Datatable</h2>
+    <div class="components">
+      <ff-datatable [datasource]="datasource" [displayColumns]="displayedColumns"></ff-datatable>
     </div>
   </li>
 </ul>

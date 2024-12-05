@@ -11,6 +11,7 @@ A collection of reusable components designed for use in Frank!Framework projects
 | [Button](/projects/angular-components/src/lib/button/) | &lt;ff-button&gt; | Buttons that fit the FF style & can have a toggleable active state
 | [Chip](/projects/angular-components/src/lib/chip/) | &lt;ff-chip&gt; | A stylized border around a word or short text, most likely used for labeling
 | [Search](/projects/angular-components/src/lib/search/) | &lt;ff-search&gt; | A search field that works like any other form input but doesn't need to be in a form
+| [Checkbox](/projects/angular-components/src/lib/checkbox/) | &lt;ff-checkbox&gt; | A custom checkbox using the ff colourscheme
 
 ## How to use
 Install the package from NPM (coming soon)
@@ -22,7 +23,7 @@ Then import one of the components that you'd like to use or import the `LibraryM
 
 Import the stylesheet into `styles.scss` using:
 ```scss
-@use '~@frankframework/angular-components';
+@use '@frankframework/angular-components';
 ```
 
 ### Dark theme
@@ -30,7 +31,7 @@ The dark theme is set up to work whenever `<body class="ff-dark-theme">` is pres
 But if you'd like to have it work under a custom classname then you should add this to your `styles.scss`:
 ```scss
 body.custom-name {
-  @import '~@frankframework/angular-components/styles/dark_theme';
+  @import '@frankframework/angular-components/styles/dark_theme';
 }
 ```
 

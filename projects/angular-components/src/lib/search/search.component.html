@@ -1,5 +1,5 @@
-<label
-  ><ff-icon-magnifier width="24" height="24" colour="#626262"></ff-icon-magnifier
+<label [ngClass]="{ disabled, slim }"
+  ><ff-icon-magnifier [width]="slim ? 16 : 28" [height]="slim ? 16 : 28" colour="#8A8A8A"></ff-icon-magnifier
   ><input
     type="text"
     [placeholder]="placeholder"
@@ -9,7 +9,7 @@
     (input)="_onInteractionEvent($event)"
     #input
   />
-  @if (!disabled) {
+  @if (focusKeyEnabled && !disabled) {
     <kbd>{{ focusKey }}</kbd>
   }
 </label>
