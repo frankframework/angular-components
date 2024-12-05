@@ -25,10 +25,10 @@
     <h2>Search</h2>
     <div class="components">
       <ff-search [(ngModel)]="searchText" style="width: 100%"></ff-search>
-      <div class="seperator">
+      <div class="separator">
         <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%"></ff-search>
         <ff-search placeholder="Disabled" style="width: 100%" disabled></ff-search>
-        <ff-search placeholder="Slimmed down" noFocus slim style="width: 100%"></ff-search>
+        <ff-search placeholder="Slimmed down" [focusKeyEnabled]="false" slim style="width: 100%"></ff-search>
       </div>
     </div>
     <p>Search query: {{ searchText }}</p>
