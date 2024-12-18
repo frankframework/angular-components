@@ -1,6 +1,7 @@
 $ff-color-light: #FFFFFF;
 $ff-color-dark: #1E1E1E;
 $ff-color-gray: #8A8A8A;
+$ff-color-light-gray: #EDEDED;
 $ff-color-dark-gray: #626262;
 
 $ff-bgcolor-white: #FAFAFA;
@@ -15,6 +16,9 @@ $ff-alert-info: #037CD4;
 $ff-alert-success: #00d841;
 $ff-alert-warning: #d89400;
 $ff-alert-error: #DA0004;
+
+$ff-anchor-default: #0066AF;
+$ff-anchor-active: $ff-bgcolor-yellow;
 
 @function hex-with-opacity($color, $opacity) {
   @return rgba(from $color r g b / $opacity);
