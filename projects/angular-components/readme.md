@@ -1,6 +1,6 @@
 # Angular Components
 
-A collection of reusable components designed for use in Frank!Framework projects, based on new proposed FF!Doc designs.
+A collection of reusable components designed for use in Frank!Framework projects, based on new proposed FF!Reference designs.
 
 ## How to use
 Install the package from NPM (coming soon)
