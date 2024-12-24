@@ -57,4 +57,8 @@ export class AppComponent implements OnInit {
   protected toggleTheme(): void {
     document.body.classList.toggle('ff-dark-theme');
   }
+
+  protected changeSearchQuery(): void {
+    this.searchText = 'Eekum Bokum';
+  }
 }

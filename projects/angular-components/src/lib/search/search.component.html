@@ -3,10 +3,11 @@
   ><input
     type="text"
     [placeholder]="placeholder"
-    [attr.value]="value"
     [disabled]="disabled"
+    [value]="value"
     (blur)="_onBlur()"
-    (input)="_onInteractionEvent($event)"
+    (input)="_onInputEvent()"
+    (change)="_onInteractionEvent($event)"
     #input
   />
   @if (focusKeyEnabled && !disabled) {

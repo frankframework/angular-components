@@ -1,9 +1,11 @@
 import {
   booleanAttribute,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   forwardRef,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -30,21 +32,42 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
 export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor {
-  @Input() value: string = '';
   @Input() placeholder: string = 'Search...';
   @Input() focusKey: string = '/';
   @Input({ transform: booleanAttribute }) focusKeyEnabled: boolean = true;
-  @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) slim: boolean = false;
   @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
 
+  private _value: string = '';
+  private _disabled: boolean = false;
+
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+  set value(value: string) {
+    this._value = value;
+    this._changeDetectorRef.markForCheck();
+  }
+
+  @Input({ transform: booleanAttribute })
+  get disabled(): boolean {
+    return this._disabled;
+  }
+  set disabled(disabled: boolean) {
+    this._disabled = disabled;
+    this._changeDetectorRef.markForCheck();
+  }
+
+  private _changeDetectorRef = inject(ChangeDetectorRef);
   private searchSubject: Subject<string> = new Subject();
 
   ngOnInit(): void {
     this.searchSubject.pipe(debounceTime(200)).subscribe((value) => {
+      this.value = value;
       this._onChange(value);
     });
 
@@ -78,12 +101,18 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
   }
 
   protected _onBlur(): void {
-    Promise.resolve().then(() => this._onTouched());
+    Promise.resolve().then(() => {
+      this._onTouched();
+      this._changeDetectorRef.markForCheck();
+    });
+  }
+
+  protected _onInputEvent(): void {
+    this.searchSubject.next(this._inputElement.nativeElement.value);
   }
 
   protected _onInteractionEvent(event: Event): void {
     event.stopPropagation();
-    this.searchSubject.next(this._inputElement.nativeElement.value);
   }
 
   protected _onKeyEvent(event: KeyboardEvent): void {
