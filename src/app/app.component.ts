@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     { name: 'title', displayName: 'Title', property: 'title' },
     { name: 'description', displayName: 'Description', property: 'description' },
     { name: 'genre', displayName: 'Genre', property: 'genre' },
+    { name: 'actions', displayName: 'Actions', property: null, html: true },
   ];
 
   constructor() {}
