@@ -5,6 +5,8 @@ import { AlertComponent } from './alert/alert.component';
 import { ChipComponent } from './chip/chip.component';
 import { DatatableComponent } from './datatable/datatable.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { DtContentDirective } from './datatable/dt-content.directive';
+import { ThSortableDirective } from './th-sortable.directive';
 
 const components = [
   ButtonComponent,
@@ -13,6 +15,8 @@ const components = [
   ChipComponent,
   DatatableComponent,
   CheckboxComponent,
+  DtContentDirective,
+  ThSortableDirective,
 ];
 
 @NgModule({

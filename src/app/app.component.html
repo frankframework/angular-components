@@ -79,6 +79,14 @@
   <li>
     <h2>Datatable</h2>
     <div class="components">
+      <ff-datatable [datasource]="datasource" [displayColumns]="displayedColumns">
+        <ng-template appDtContent>
+          <span><button>Something</button></span>
+        </ng-template>
+      </ff-datatable>
+    </div>
+    <p>Without template:</p>
+    <div class="components">
       <ff-datatable [datasource]="datasource" [displayColumns]="displayedColumns"></ff-datatable>
     </div>
   </li>
