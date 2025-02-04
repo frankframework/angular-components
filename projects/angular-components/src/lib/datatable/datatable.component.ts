@@ -59,7 +59,7 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   @Input({ required: true }) public datasource!: DataTableDataSource<T>;
   @Input({ required: true }) public displayColumns: DataTableColumn<T>[] = [];
 
-  @ContentChild(DtContentDirective) protected content!: DtContentDirective<T>;
+  @ContentChild(DtContentDirective) protected content?: DtContentDirective<T>;
   protected totalFilteredEntries: number = 0;
   protected totalEntries: number = 0;
   protected minPageEntry: number = 0;

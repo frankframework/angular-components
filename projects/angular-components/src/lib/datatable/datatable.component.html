@@ -30,9 +30,11 @@
           </ng-container>
           <ng-template #htmlBody>
             <ng-container
+              *ngIf="content; else noTemplate"
               [ngTemplateOutlet]="content.templateReference"
               [ngTemplateOutletContext]="{ rowElement: element }"
             ></ng-container>
+            <ng-template #noTemplate><small>No template with DtContent found in datatable body</small></ng-template>
           </ng-template>
         </td>
       </ng-container>
