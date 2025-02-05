@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, ContentChild, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, Input, OnDestroy, QueryList, TemplateRef } from '@angular/core';
 import { CdkTableModule, DataSource } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { DtContentDirective } from './dt-content.directive';
+import { DtContentDirective, DtContent } from './dt-content.directive';
 
 export type TableOptions = {
   sizeOptions: number[];
@@ -48,6 +48,11 @@ export type DataTableServerResponseInfo<T> = {
   data: T[];
 };
 
+type ContentTemplate<T> = {
+  template: TemplateRef<DtContent<T>>;
+  name?: string;
+};
+
 @Component({
   selector: 'ff-datatable',
   standalone: true,
@@ -59,7 +64,8 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   @Input({ required: true }) public datasource!: DataTableDataSource<T>;
   @Input({ required: true }) public displayColumns: DataTableColumn<T>[] = [];
 
-  @ContentChild(DtContentDirective) protected content?: DtContentDirective<T>;
+  @ContentChildren(DtContentDirective) protected content!: QueryList<DtContentDirective<T>>;
+  protected contentTemplates: ContentTemplate<T>[] = [];
   protected totalFilteredEntries: number = 0;
   protected totalEntries: number = 0;
   protected minPageEntry: number = 0;
@@ -76,6 +82,10 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
     setTimeout(() => {
+      this.contentTemplates = this.content.map((contentItem) => ({
+        name: contentItem.dtContent,
+        template: contentItem.templateReference,
+      }));
       const entriesSubscription = this.datasource.getEntriesInfo().subscribe((entriesInfo) => {
         this.totalEntries = entriesInfo.totalEntries;
         this.totalFilteredEntries = entriesInfo.totalFilteredEntries;
@@ -106,6 +116,10 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
 
   updatePage(pageNumber: number): void {
     this.datasource.updatePage(pageNumber);
+  }
+
+  protected findHtmlTemplate(templateName: string): ContentTemplate<T> | undefined {
+    return this.contentTemplates.find(({ name }) => name === templateName);
   }
 }
 

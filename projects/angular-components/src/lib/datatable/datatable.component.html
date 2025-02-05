@@ -29,16 +29,28 @@
             ><ng-container>{{ element[column.property] }}</ng-container>
           </ng-container>
           <ng-template #htmlBody>
-            <ng-container
-              *ngIf="content; else noTemplate"
-              [ngTemplateOutlet]="content.templateReference"
-              [ngTemplateOutletContext]="{ rowElement: element }"
-            ></ng-container>
-            <ng-template #noTemplate><small>No template with DtContent found in datatable body</small></ng-template>
+            <ng-container *ngIf="contentTemplates.length > 0; else noTemplate">
+              <ng-container
+                *ngIf="contentTemplates.length === 1; else multiTemplates"
+                [ngTemplateOutlet]="contentTemplates[0].template"
+                [ngTemplateOutletContext]="{ rowElement: element }"
+              ></ng-container>
+              <ng-template #multiTemplates>
+                <ng-container
+                  *ngIf="findHtmlTemplate(column.name); else noTemplateWithName"
+                  [ngTemplateOutlet]="findHtmlTemplate(column.name)!.template"
+                  [ngTemplateOutletContext]="{ rowElement: element }"
+                ></ng-container>
+              </ng-template>
+            </ng-container>
           </ng-template>
         </td>
       </ng-container>
     </ng-container>
+    <ng-template #noTemplate><small>No template with DtContent found in datatable body</small></ng-template>
+    <ng-template #noTemplateWithName
+      ><small>No template with DtContent name found in datatable body</small></ng-template
+    >
 
     <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
     <tr cdk-row *cdkRowDef="let row; columns: displayedColumns"></tr>
