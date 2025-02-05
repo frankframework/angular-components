@@ -12,3 +12,4 @@ export * from './lib/datatable/dt-content.directive';
 
 // helper classes
 export * from './lib/icons/icon-base';
+export * from './lib/utils/focus-on-key.util';

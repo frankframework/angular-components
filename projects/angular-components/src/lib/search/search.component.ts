@@ -9,12 +9,14 @@ import {
   Input,
   OnDestroy,
   OnInit,
+  AfterViewInit,
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IconMagnifierComponent } from '../icons/icon-magnifier/icon-magnifier.component';
 import { debounceTime, noop, Subject } from 'rxjs';
 import { NgClass } from '@angular/common';
+import { FocusOnKeyUtil } from '../utils/focus-on-key.util';
 
 export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -31,9 +33,10 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
-export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
   @Input() placeholder: string = 'Search...';
   @Input() focusKey: string = '/';
+  @Input({ transform: booleanAttribute }) forceFocus: boolean = false;
   @Input({ transform: booleanAttribute }) focusKeyEnabled: boolean = true;
   @Input({ transform: booleanAttribute }) slim: boolean = false;
   @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
@@ -43,6 +46,12 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
 
   private _value: string = '';
   private _disabled: boolean = false;
+  private focusKeyUtil = new FocusOnKeyUtil({
+    key: '/',
+    ctrl: false,
+    shift: false,
+    force: false,
+  });
 
   @Input()
   get value(): string {
@@ -70,9 +79,16 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
       this.value = value;
       this._onChange(value);
     });
+    this.focusKeyUtil.updateConfig({
+      key: this.focusKey,
+      force: this.forceFocus,
+    });
+  }
 
+  ngAfterViewInit(): void {
     if (this.focusKeyEnabled) {
-      window.addEventListener('keyup', this._onKeyEvent.bind(this), true);
+      this.focusKeyUtil.setFocusElement(this._inputElement.nativeElement);
+      this.focusKeyUtil.enable();
     }
   }
 
@@ -80,7 +96,7 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
     this.searchSubject.complete();
 
     if (this.focusKeyEnabled) {
-      window.removeEventListener('keyup', this._onKeyEvent, true);
+      this.focusKeyUtil?.disable();
     }
   }
 
@@ -113,12 +129,5 @@ export class SearchComponent implements OnInit, OnDestroy, ControlValueAccessor 
 
   protected _onInteractionEvent(event: Event): void {
     event.stopPropagation();
-  }
-
-  protected _onKeyEvent(event: KeyboardEvent): void {
-    if (event.key === this.focusKey) {
-      this._inputElement.nativeElement.focus();
-      event.preventDefault();
-    }
   }
 }
