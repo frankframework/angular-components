@@ -3,7 +3,6 @@ import { IconBaseComponent } from 'angular-components';
 
 @Component({
   selector: 'app-svg-add-icon',
-  standalone: true,
   imports: [],
   templateUrl: './svg-add-icon.component.html',
   styles: `

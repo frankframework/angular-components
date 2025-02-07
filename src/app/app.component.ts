@@ -11,7 +11,6 @@ type TableData = {
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [FormsModule, LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

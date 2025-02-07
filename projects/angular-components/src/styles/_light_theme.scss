@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables';
 
 ff-button *,
 ff-search *,
@@ -10,58 +10,58 @@ ff-datatable * {
 }
 
 ff-button > button {
-  color: $ff-color-light;
-  background-color: $ff-bgcolor-dark-gray;
+  color: variables.$ff-color-light;
+  background-color: variables.$ff-bgcolor-dark-gray;
 
   &:hover {
-    color: $ff-color-dark;
-    background-color: $ff-bgcolor-yellow;
+    color: variables.$ff-color-dark;
+    background-color: variables.$ff-bgcolor-yellow;
   }
 
   &:active:not(:disabled) {
-    color: $ff-color-dark;
-    background-color: $ff-bgcolor-yellow;
-    border: 3px solid $ff-border-yellow;
+    color: variables.$ff-color-dark;
+    background-color: variables.$ff-bgcolor-yellow;
+    border: 3px solid variables.$ff-border-yellow;
   }
 
   &:disabled {
-    color: $ff-color-gray;
-    background-color: $ff-bgcolor-gray;
+    color: variables.$ff-color-gray;
+    background-color: variables.$ff-bgcolor-gray;
   }
 
   &.active {
-    color: $ff-color-dark;
-    background-color: $ff-color-light;
-    border: 1px dashed $ff-border-gray;
+    color: variables.$ff-color-dark;
+    background-color: variables.$ff-color-light;
+    border: 1px dashed variables.$ff-border-gray;
     gap: 8px;
 
     &:hover {
-      color: $ff-color-dark;
-      background-color: $ff-bgcolor-yellow;
+      color: variables.$ff-color-dark;
+      background-color: variables.$ff-bgcolor-yellow;
     }
   }
 }
 
 ff-search > label {
-  color: $ff-color-gray;
-  background-color: $ff-bgcolor-white;
-  border: 1px solid $ff-bgcolor-gray;
+  color: variables.$ff-color-gray;
+  background-color: variables.$ff-bgcolor-white;
+  border: 1px solid variables.$ff-bgcolor-gray;
 
   &.disabled {
-    background-color: $ff-bgcolor-gray;
+    background-color: variables.$ff-bgcolor-gray;
   }
 
   input {
     color: inherit;
 
     &::placeholder {
-      color: hex-with-opacity($ff-color-gray, 0.75);
+      color: variables.hex-with-opacity(variables.$ff-color-gray, 0.75);
     }
   }
 
   kbd {
-    color: $ff-color-gray;
-    border: 1px solid $ff-border-gray;
+    color: variables.$ff-color-gray;
+    border: 1px solid variables.$ff-border-gray;
   }
 }
 
@@ -69,40 +69,40 @@ $ff-alert-light-opacity: 0.1;
 $ff-alert-light-border-opacity: 0.2;
 
 ff-alert > .ff-alert {
-  color: $ff-color-dark;
-  border: solid $ff-border-gray;
+  color: variables.$ff-color-dark;
+  border: solid variables.$ff-border-gray;
 
   &.info {
-    $light-border-side: hex-with-opacity($ff-alert-info, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-info;
-    background-color: hex-with-opacity($ff-alert-info, $ff-alert-light-opacity);
+    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-info, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-info;
+    background-color: variables.hex-with-opacity(variables.$ff-alert-info, $ff-alert-light-opacity);
   }
 
   &.success {
-    $light-border-side: hex-with-opacity($ff-alert-success, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-success;
-    background-color: hex-with-opacity($ff-alert-success, $ff-alert-light-opacity);
+    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-success, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-success;
+    background-color: variables.hex-with-opacity(variables.$ff-alert-success, $ff-alert-light-opacity);
   }
 
   &.warning {
-    $light-border-side: hex-with-opacity($ff-alert-warning, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-warning;
-    background-color: hex-with-opacity($ff-alert-warning, $ff-alert-light-opacity);
+    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-warning, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-warning;
+    background-color: variables.hex-with-opacity(variables.$ff-alert-warning, $ff-alert-light-opacity);
   }
 
   &.error {
-    $light-border-side: hex-with-opacity($ff-alert-error, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side $ff-alert-error;
-    background-color: hex-with-opacity($ff-alert-error, $ff-alert-light-opacity);
+    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-error, $ff-alert-light-border-opacity);
+    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-error;
+    background-color: variables.hex-with-opacity(variables.$ff-alert-error, $ff-alert-light-opacity);
   }
 }
 
 ff-chip > span {
-  border: 1px solid $ff-border-gray;
+  border: 1px solid variables.$ff-border-gray;
 }
 
 ff-datatable > .dt-wrapper {
-  color: $ff-color-dark;
+  color: variables.$ff-color-dark;
 
   table {
     margin-top: 4px;
@@ -110,7 +110,7 @@ ff-datatable > .dt-wrapper {
   }
 
   & th, & td {
-    border: 1px solid $ff-border-gray;
+    border: 1px solid variables.$ff-border-gray;
     border-width: 1px 0;
   }
 }

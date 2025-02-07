@@ -1,3 +1,4 @@
+@use "sass:meta";
 @forward "./styles/_light_theme.scss";
 
 @font-face {
@@ -17,5 +18,5 @@
 }
 
 body.ff-dark-theme {
-  @import "./styles/_dark_theme.scss";
+  @include meta.load-css("styles/_dark_theme");
 }
