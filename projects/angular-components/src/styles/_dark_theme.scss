@@ -4,15 +4,16 @@ ff-button > button {
   &:disabled {
     color: variables.$ff-color-gray;
     background-color: variables.$ff-bgcolor-dark-gray;
+    border-color: variables.$ff-bgcolor-dark-gray;
   }
 
   &.active {
     color: variables.$ff-color-light;
-    background-color: variables.$ff-bgcolor-dark-gray;
+    border-color: variables.$ff-bgcolor-dark-gray;
 
     &:hover {
       color: variables.$ff-color-dark;
-      background-color: variables.$ff-bgcolor-yellow;
+      border-color: variables.$ff-bgcolor-yellow;
     }
   }
 }
