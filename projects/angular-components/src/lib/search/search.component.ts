@@ -17,6 +17,7 @@ import { IconMagnifierComponent } from '../icons/icon-magnifier/icon-magnifier.c
 import { debounceTime, noop, Subject } from 'rxjs';
 import { NgClass } from '@angular/common';
 import { FocusOnKeyUtil } from '../utils/focus-on-key.util';
+import { AutoFocusDirective } from '../auto-focus.directive';
 
 export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -27,7 +28,7 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
 @Component({
   selector: 'ff-search',
   standalone: true,
-  imports: [FormsModule, NgClass, IconMagnifierComponent],
+  imports: [FormsModule, NgClass, IconMagnifierComponent, AutoFocusDirective],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
