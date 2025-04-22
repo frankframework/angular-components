@@ -19,6 +19,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Publish package
-        run: pnpm publish
+        run: pnpm publish --publish-branch ${{ github.ref_name }}
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
