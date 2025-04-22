@@ -12,6 +12,7 @@ ff-datatable * {
 ff-button > button {
   color: variables.$ff-color-light;
   background-color: variables.$ff-bgcolor-dark-gray;
+  border-color: variables.$ff-bgcolor-dark-gray;
 
   &:hover {
     color: variables.$ff-color-dark;
@@ -21,23 +22,25 @@ ff-button > button {
   &:active:not(:disabled) {
     color: variables.$ff-color-dark;
     background-color: variables.$ff-bgcolor-yellow;
-    border: 3px solid variables.$ff-border-yellow;
+    border: 2px solid variables.$ff-border-yellow;
   }
 
   &:disabled {
     color: variables.$ff-color-gray;
     background-color: variables.$ff-bgcolor-gray;
+    border-color: variables.$ff-bgcolor-gray;
   }
 
   &.active {
     color: variables.$ff-color-dark;
     background-color: variables.$ff-color-light;
-    border: 1px dashed variables.$ff-border-gray;
+    border: 2px dashed variables.$ff-border-gray;
     gap: 8px;
 
     &:hover {
       color: variables.$ff-color-dark;
       background-color: variables.$ff-bgcolor-yellow;
+      border-color: variables.$ff-bgcolor-yellow;
     }
   }
 }
