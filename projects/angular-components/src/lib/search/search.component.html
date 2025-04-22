@@ -8,6 +8,7 @@
     (blur)="_onBlur()"
     (input)="_onInputEvent()"
     (change)="_onInteractionEvent($event)"
+    [ffAutoFocus]="autofocus"
     #input
   />
   @if (focusKeyEnabled && !disabled) {

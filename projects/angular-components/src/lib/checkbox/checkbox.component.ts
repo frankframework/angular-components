@@ -2,6 +2,7 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, forwardRef, Input
 import { IconCheckComponent } from '../icons/icon-check/icon-check.component';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { noop } from 'rxjs';
+import { AutoFocusDirective } from '../auto-focus.directive';
 
 export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -12,7 +13,7 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
 @Component({
   selector: 'ff-checkbox',
   standalone: true,
-  imports: [FormsModule, IconCheckComponent],
+  imports: [FormsModule, IconCheckComponent, AutoFocusDirective],
   templateUrl: './checkbox.component.html',
   styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +22,7 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
 export class CheckboxComponent implements ControlValueAccessor {
   @Input({ transform: booleanAttribute }) disabled: boolean = false;
   @Input({ transform: booleanAttribute }) checked: boolean = false;
+  @Input({ transform: booleanAttribute }) autofocus: boolean = false;
   @Input() colour: string = '#000';
   // @Input() backgroundColour: string = '#FDC300';
 

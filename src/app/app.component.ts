@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
     { name: 'something', displayName: 'Something', property: null, html: true },
   ];
 
-  constructor() {}
-
   ngOnInit(): void {
     this.datasource.data = [
       {
