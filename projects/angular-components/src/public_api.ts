@@ -8,6 +8,7 @@ export * from './lib/datatable/datatable.component';
 export * from './lib/checkbox/checkbox.component';
 
 export * from './lib/th-sortable.directive';
+export * from './lib/auto-focus.directive';
 export * from './lib/datatable/dt-content.directive';
 
 // helper classes
