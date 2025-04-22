@@ -36,6 +36,7 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
   @Input() placeholder: string = 'Search...';
   @Input() focusKey: string = '/';
+  @Input({ transform: booleanAttribute }) autofocus: boolean = false;
   @Input({ transform: booleanAttribute }) forceFocus: boolean = false;
   @Input({ transform: booleanAttribute }) focusKeyEnabled: boolean = true;
   @Input({ transform: booleanAttribute }) slim: boolean = false;
