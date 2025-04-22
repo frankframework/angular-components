@@ -22,6 +22,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Publish package
-        run: pnpm publish --no-git-checks # This commit will be checked out without being attatched to a branch.
+        run: pnpm publish projects/angular-components --no-git-checks # This commit will be checked out without being attatched to a branch.
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
