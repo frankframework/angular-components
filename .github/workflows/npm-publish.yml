@@ -21,7 +21,9 @@ jobs:
           registry-url: https://registry.npmjs.org
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Build package
+        run: pnpm run build
       - name: Publish package
-        run: pnpm publish projects/angular-components --no-git-checks # This commit will be checked out without being attatched to a branch.
+        run: pnpm publish projects/angular-components --no-git-checks --force # This commit will be checked out without being attatched to a branch.
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
