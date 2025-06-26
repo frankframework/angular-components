@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { DtContentDirective, DtContent } from './dt-content.directive';
-import { SortDirection } from '../th-sortable.directive';
+import { SortDirection, SortEvent, ThSortableDirective } from '../th-sortable.directive';
 
 export type TableOptions = {
   sizeOptions: number[];
@@ -58,7 +58,7 @@ type ContentTemplate<T> = {
 @Component({
   selector: 'ff-datatable',
   standalone: true,
-  imports: [CommonModule, FormsModule, CdkTableModule],
+  imports: [CommonModule, FormsModule, CdkTableModule, ThSortableDirective],
   templateUrl: './datatable.component.html',
   styleUrl: './datatable.component.scss',
 })
@@ -223,6 +223,10 @@ export class DataTableDataSource<T> extends DataSource<T> {
   ): void {
     if (!this.options.serverSide) return;
     this.serverRequestFn = requestFunction;
+  }
+
+  onSort(event: SortEvent): void {
+    // TODO
   }
 
   private updateRenderedData(data: T[]): void {
