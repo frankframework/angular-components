@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { DtContentDirective, DtContent } from './dt-content.directive';
+import { SortDirection } from '../th-sortable.directive';
 
 export type TableOptions = {
   sizeOptions: number[];
   size: number;
-  serverSide: boolean;
   filter: boolean;
+  serverSide: boolean;
+  serverSort: SortDirection;
 };
 
 export type DataTableColumn<T> = {
@@ -37,7 +39,7 @@ export type DataTablePaginationInfo = {
 export type DataTableServerRequestInfo = {
   size: number;
   offset: number;
-  sort: 'asc' | 'desc';
+  sort: SortDirection;
 };
 
 export type DataTableServerResponseInfo<T> = {
@@ -132,6 +134,7 @@ export class DataTableDataSource<T> extends DataSource<T> {
     size: 50,
     filter: true,
     serverSide: false,
+    serverSort: 'NONE',
   });
   private _entriesInfo = new BehaviorSubject<DataTableEntryInfo>({
     minPageEntry: 0,
@@ -147,7 +150,6 @@ export class DataTableDataSource<T> extends DataSource<T> {
   private _entriesInfo$ = this._entriesInfo.asObservable();
 
   private filteredData: T[] = [];
-  private serverRequestId: number = -1;
   private serverRequestFn?: (value: DataTableServerRequestInfo) => PromiseLike<DataTableServerResponseInfo<T>>;
 
   get data(): T[] {
@@ -237,7 +239,7 @@ export class DataTableDataSource<T> extends DataSource<T> {
     Promise.resolve<DataTableServerRequestInfo>({
       size: this.options.size,
       offset: (this.currentPage - 1) * this.options.size,
-      sort: 'asc',
+      sort: this.options.serverSort,
     })
       .then(this.serverRequestFn)
       .then((response) => {
