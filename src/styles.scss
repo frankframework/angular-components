@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @use '../dist/angular-components';
 
+app-root {
+  font-family: 'Inter', sans-serif;
+
+  &.no-font {
+    font-family: unset;
+  }
+}
+
 .yellow-dark {
   color: inherit;
 }

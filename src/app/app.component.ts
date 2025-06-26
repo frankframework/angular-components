@@ -28,6 +28,8 @@ export class AppComponent implements OnInit {
     { name: 'something', displayName: 'Something', property: null, html: true },
   ];
 
+  private readonly appRoot: HTMLElement = document.querySelector('app-root')!;
+
   ngOnInit(): void {
     this.datasource.data = [
       {
@@ -55,6 +57,10 @@ export class AppComponent implements OnInit {
 
   protected toggleTheme(): void {
     document.body.classList.toggle('ff-dark-theme');
+  }
+
+  protected toggleFont(): void {
+    this.appRoot.classList.toggle('no-font');
   }
 
   protected changeSearchQuery(): void {
