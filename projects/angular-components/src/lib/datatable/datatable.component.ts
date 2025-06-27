@@ -1,10 +1,19 @@
-import { AfterViewInit, Component, ContentChildren, Input, OnDestroy, QueryList, TemplateRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  Input,
+  OnDestroy,
+  QueryList,
+  TemplateRef,
+  ViewChildren,
+} from '@angular/core';
 import { CdkTableModule, DataSource } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { DtContentDirective, DtContent } from './dt-content.directive';
-import { SortDirection, SortEvent, ThSortableDirective } from '../th-sortable.directive';
+import { basicAnyValueTableSort, SortDirection, SortEvent, ThSortableDirective } from '../th-sortable.directive';
 
 export type TableOptions = {
   sizeOptions: number[];
@@ -12,6 +21,7 @@ export type TableOptions = {
   filter: boolean;
   serverSide: boolean;
   serverSort: SortDirection;
+  columnSort: boolean;
 };
 
 export type DataTableColumn<T> = {
@@ -66,6 +76,7 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   @Input({ required: true }) public datasource!: DataTableDataSource<T>;
   @Input({ required: true }) public displayColumns: DataTableColumn<T>[] = [];
 
+  @ViewChildren(ThSortableDirective) sortableHeaders!: QueryList<ThSortableDirective>;
   @ContentChildren(DtContentDirective) protected content!: QueryList<DtContentDirective<T>>;
   protected contentTemplates: ContentTemplate<T>[] = [];
   protected totalFilteredEntries: number = 0;
@@ -80,6 +91,7 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   }
 
   private datasourceSubscription: Subscription = new Subscription();
+  private originalData: T[] | null = null;
 
   ngAfterViewInit(): void {
     // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
@@ -107,21 +119,26 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
     this.datasourceSubscription.unsubscribe();
   }
 
-  applyFilter(event: Event): void {
+  protected applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.datasource.filter = filterValue.trim();
   }
 
-  applyPaginationSize(sizeValue: string): void {
+  protected applyPaginationSize(sizeValue: string): void {
     this.datasource.options = { size: +sizeValue };
   }
 
-  updatePage(pageNumber: number): void {
+  protected updatePage(pageNumber: number): void {
     this.datasource.updatePage(pageNumber);
   }
 
   protected findHtmlTemplate(templateName: string): ContentTemplate<T> | undefined {
     return this.contentTemplates.find(({ name }) => name === templateName);
+  }
+
+  protected onColumnSort(event: SortEvent): void {
+    if (this.originalData === null) this.originalData = this.datasource.data;
+    this.datasource.data = basicAnyValueTableSort(this.originalData, this.sortableHeaders, event);
   }
 }
 
@@ -135,6 +152,7 @@ export class DataTableDataSource<T> extends DataSource<T> {
     filter: true,
     serverSide: false,
     serverSort: 'NONE',
+    columnSort: true,
   });
   private _entriesInfo = new BehaviorSubject<DataTableEntryInfo>({
     minPageEntry: 0,
@@ -223,10 +241,6 @@ export class DataTableDataSource<T> extends DataSource<T> {
   ): void {
     if (!this.options.serverSide) return;
     this.serverRequestFn = requestFunction;
-  }
-
-  onSort(event: SortEvent): void {
-    // TODO
   }
 
   private updateRenderedData(data: T[]): void {
