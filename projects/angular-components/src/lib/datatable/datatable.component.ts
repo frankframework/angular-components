@@ -32,6 +32,7 @@ export type DataTableColumn<T> = {
   html?: boolean;
   className?: string;
   hidden?: boolean;
+  sortable?: boolean;
 };
 
 export type DataTableEntryInfo = {

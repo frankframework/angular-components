@@ -21,7 +21,7 @@
   <table cdk-table [dataSource]="datasource" class="table table-striped table-hover">
     <ng-container *ngFor="let column of displayColumns">
       <ng-container [cdkColumnDef]="column.name">
-        @if (this.datasource.options.columnSort && !datasource.options.serverSide) {
+        @if (this.datasource.options.columnSort && !datasource.options.serverSide && column.sortable) {
           <th
             cdk-header-cell
             *cdkHeaderCellDef
