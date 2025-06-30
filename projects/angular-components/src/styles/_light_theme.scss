@@ -116,3 +116,13 @@ ff-datatable > .dt-wrapper {
     border-width: 1px 0;
   }
 }
+
+th[sortable] {
+  position: relative;
+  cursor: pointer;
+
+  span.sort-icon {
+    position: absolute;
+    right: 0;
+  }
+}

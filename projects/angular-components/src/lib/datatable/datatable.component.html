@@ -25,10 +25,11 @@
           <th
             cdk-header-cell
             *cdkHeaderCellDef
+            sortable
+            [columnName]="column.name"
+            (sorted)="onColumnSort($event)"
             [className]="column.className"
             [hidden]="column.hidden"
-            [sortable]="column.name"
-            (sorted)="onColumnSort($event)"
           >
             {{ column.displayName }}
           </th>

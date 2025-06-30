@@ -9,8 +9,8 @@ import { By } from '@angular/platform-browser';
     <table>
       <thead>
         <tr>
-          <th sortable="name" (sorted)="onSort($event)">Name</th>
-          <th sortable="value" (sorted)="onSort($event)">Size</th>
+          <th sortColumnName="name" (sorted)="onSort($event)">Name</th>
+          <th sortColumnName="value" (sorted)="onSort($event)">Size</th>
         </tr>
       </thead>
       <tbody>

@@ -1,14 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  inject,
-  Input,
-  OnInit,
-  Output,
-  QueryList
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, inject, Input, Output, QueryList } from '@angular/core';
 
 export type SortDirection = 'ASC' | 'DESC' | 'NONE';
 export type SortEvent = {
@@ -23,7 +13,7 @@ export const anyCompare = <T>(v1: T, v2: T): 1 | -1 | 0 => (v1 < v2 ? -1 : v1 > 
 
 export function updateSortableHeaders(headers: QueryList<ThSortableDirective>, column: string | number | symbol): void {
   for (const header of headers) {
-    if (header.sortable !== column) {
+    if (header.columnName !== column) {
       header.updateDirection('NONE');
     }
   }
@@ -65,7 +55,7 @@ export function basicAnyValueTableSort<T>(
   standalone: true,
 })
 export class ThSortableDirective {
-  @Input() sortable: string = '';
+  @Input() columnName: string = '';
   @Input() direction: SortDirection = 'NONE';
   @Output() sorted = new EventEmitter<SortEvent>();
 
@@ -74,7 +64,7 @@ export class ThSortableDirective {
 
   @HostListener('click') nextSort(): void {
     this.updateDirection(this.nextSortOption(this.direction));
-    this.sorted.emit({ column: this.sortable, direction: this.direction });
+    this.sorted.emit({ column: this.columnName, direction: this.direction });
   }
 
   updateIcon(direction: SortDirection): void {
@@ -83,7 +73,6 @@ export class ThSortableDirective {
       icon.remove();
     }
     if (direction === 'NONE') return;
-    // direction == 'ASC' ? ' <i class="sort-icon"></i>' : ' <i class="sort-icon"></i>'
     const iconElement = document.createElement('span');
     iconElement.classList.add('sort-icon');
     iconElement.innerHTML = direction == 'ASC' ? '&uarr;' : '&darr;';
