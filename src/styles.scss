@@ -1,5 +1,13 @@
 @use '../dist/angular-components';
 
+app-root {
+  font-family: 'Inter', sans-serif;
+
+  &.no-font {
+    font-family: unset;
+  }
+}
+
 .yellow-dark {
   color: inherit;
 }
