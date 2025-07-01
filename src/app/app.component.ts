@@ -21,9 +21,9 @@ export class AppComponent implements OnInit {
   protected checked2: boolean = true;
   protected datasource: DataTableDataSource<TableData> = new DataTableDataSource();
   protected displayedColumns: DataTableColumn<TableData>[] = [
-    { name: 'title', displayName: 'Title', property: 'title' },
-    { name: 'description', displayName: 'Description', property: 'description' },
-    { name: 'genre', displayName: 'Genre', property: 'genre' },
+    { name: 'title', displayName: 'Title', property: 'title', sortable: true },
+    { name: 'description', displayName: 'Description', property: 'description', sortable: true },
+    { name: 'genre', displayName: 'Genre', property: 'genre', sortable: true },
     { name: 'actions', displayName: 'Actions', property: null, html: true },
     { name: 'something', displayName: 'Something', property: null, html: true },
   ];

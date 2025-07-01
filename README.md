@@ -5,13 +5,14 @@ A collection of reusable components designed for use in Frank!Framework projects
 ![frank-framework-github-banner](banner.png)
 
 ## Available Components
-| Component | Selector | Description
-| ---       | ---      | ---
-| [Alert](/projects/angular-components/src/lib/alert/) | &lt;ff-alert&gt; | Alert the user, useful for forms, documentation or to give a warning for anything.
-| [Button](/projects/angular-components/src/lib/button/) | &lt;ff-button&gt; | Buttons that fit the FF style & can have a toggleable active state
-| [Chip](/projects/angular-components/src/lib/chip/) | &lt;ff-chip&gt; | A stylized border around a word or short text, most likely used for labeling
-| [Search](/projects/angular-components/src/lib/search/) | &lt;ff-search&gt; | A search field that works like any other form input but doesn't need to be in a form
-| [Checkbox](/projects/angular-components/src/lib/checkbox/) | &lt;ff-checkbox&gt; | A custom checkbox using the ff colourscheme
+| Component                                                    | Selector             | Description                                                                          |
+|--------------------------------------------------------------|----------------------|--------------------------------------------------------------------------------------|
+| [Alert](/projects/angular-components/src/lib/alert/)         | &lt;ff-alert&gt;     | Alert the user, useful for forms, documentation or to give a warning for anything    |
+| [Button](/projects/angular-components/src/lib/button/)       | &lt;ff-button&gt;    | Buttons that fit the FF style & can have a toggleable active state                   |
+| [Chip](/projects/angular-components/src/lib/chip/)           | &lt;ff-chip&gt;      | A stylized border around a word or short text, most likely used for labeling         |
+| [Search](/projects/angular-components/src/lib/search/)       | &lt;ff-search&gt;    | A search field that works like any other form input but doesn't need to be in a form |
+| [Checkbox](/projects/angular-components/src/lib/checkbox/)   | &lt;ff-checkbox&gt;  | A custom checkbox using the ff colourscheme                                          |
+| [Datatable](/projects/angular-components/src/lib/datatable/) | &lt;ff-datatable&gt; | Datatable that is able to handle ng templates & server side data                     |
 
 ## How to use
 Install the package from NPM (coming soon)

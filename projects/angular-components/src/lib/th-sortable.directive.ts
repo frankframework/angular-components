@@ -1,6 +1,6 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, QueryList } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, inject, Input, Output, QueryList } from '@angular/core';
 
-export type SortDirection = 'asc' | 'desc' | null;
+export type SortDirection = 'ASC' | 'DESC' | 'NONE';
 export type SortEvent = {
   column: string | number;
   direction: SortDirection;
@@ -13,8 +13,8 @@ export const anyCompare = <T>(v1: T, v2: T): 1 | -1 | 0 => (v1 < v2 ? -1 : v1 > 
 
 export function updateSortableHeaders(headers: QueryList<ThSortableDirective>, column: string | number | symbol): void {
   for (const header of headers) {
-    if (header.sortable !== column) {
-      header.updateDirection(null);
+    if (header.columnName !== column) {
+      header.updateDirection('NONE');
     }
   }
 }
@@ -26,11 +26,11 @@ export function basicTableSort<T extends Record<string, string | number>>(
 ): T[] {
   updateSortableHeaders(headers, column);
 
-  if (direction == null || column == '') return array;
+  if (direction == 'NONE' || column == '') return array;
 
   return [...array].sort((a, b) => {
     const order = compare(a[column], b[column]);
-    return direction === 'asc' ? order : -order;
+    return direction === 'ASC' ? order : -order;
   });
 }
 
@@ -42,11 +42,11 @@ export function basicAnyValueTableSort<T>(
 ): T[] {
   updateSortableHeaders(headers, column);
 
-  if (direction == null || column == '') return array;
+  if (direction == 'NONE' || column == '') return array;
 
   return [...array].sort((a, b) => {
     const order = anyCompare(a[column as keyof T], b[column as keyof T]);
-    return direction === 'asc' ? order : -order;
+    return direction === 'ASC' ? order : -order;
   });
 }
 
@@ -54,43 +54,29 @@ export function basicAnyValueTableSort<T>(
   selector: 'th[sortable]',
   standalone: true,
 })
-export class ThSortableDirective implements OnInit {
-  @Input() sortable: string = '';
-  @Input() direction: SortDirection = null;
+export class ThSortableDirective {
+  @Input() columnName: string = '';
+  @Input() direction: SortDirection = 'NONE';
   @Output() sorted = new EventEmitter<SortEvent>();
 
-  private nextSortOption(sortOption: SortDirection): SortDirection {
-    switch (sortOption) {
-      case null: {
-        return 'asc';
-      }
-      case 'asc': {
-        return 'desc';
-      }
-      case 'desc': {
-        return null;
-      }
-      default: {
-        return sortOption as never;
-      }
-    }
-  }
-  private headerText = '';
+  private elementReference: ElementRef<HTMLTableCellElement> = inject(ElementRef);
+  private THElement = this.elementReference.nativeElement;
 
-  constructor(private elementReference: ElementRef<HTMLTableCellElement>) {}
-
-  ngOnInit(): void {
-    this.headerText = this.elementReference.nativeElement.innerHTML;
+  @HostListener('click') nextSort(): void {
+    this.updateDirection(this.nextSortOption(this.direction));
+    this.sorted.emit({ column: this.columnName, direction: this.direction });
   }
 
   updateIcon(direction: SortDirection): void {
-    let updateColumnName = '';
-    updateColumnName =
-      direction == null
-        ? this.headerText
-        : this.headerText +
-          (direction == 'asc' ? ' <i class="fa fa-arrow-up"></i>' : ' <i class="fa fa-arrow-down"></i>');
-    this.elementReference.nativeElement.innerHTML = updateColumnName;
+    const icon = this.THElement.querySelector('span.sort-icon');
+    if (icon) {
+      icon.remove();
+    }
+    if (direction === 'NONE') return;
+    const iconElement = document.createElement('span');
+    iconElement.classList.add('sort-icon');
+    iconElement.innerHTML = direction == 'ASC' ? '&uarr;' : '&darr;';
+    this.THElement.append(iconElement);
   }
 
   updateDirection(newDirection: SortDirection): void {
@@ -98,8 +84,17 @@ export class ThSortableDirective implements OnInit {
     this.updateIcon(this.direction);
   }
 
-  @HostListener('click') nextSort(): void {
-    this.updateDirection(this.nextSortOption(this.direction));
-    this.sorted.emit({ column: this.sortable, direction: this.direction });
+  private nextSortOption(sortOption: SortDirection): SortDirection {
+    switch (sortOption) {
+      case 'NONE': {
+        return 'ASC';
+      }
+      case 'ASC': {
+        return 'DESC';
+      }
+      default: {
+        return 'NONE';
+      }
+    }
   }
 }
