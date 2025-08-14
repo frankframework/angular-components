@@ -9,10 +9,10 @@ import { NgClass, NgStyle } from '@angular/common';
   styleUrl: './chip.component.scss',
 })
 export class ChipComponent {
-  @Input({ transform: booleanAttribute }) rounded: boolean = false;
-  @Input({ transform: booleanAttribute }) slim: boolean = false;
+  @Input({ transform: booleanAttribute }) rounded = false;
+  @Input({ transform: booleanAttribute }) slim = false;
 
-  private bgColour: string = 'rgb(0, 0, 0)';
+  private bgColour = 'rgb(0, 0, 0)';
   private _colour?: string;
 
   @Input()

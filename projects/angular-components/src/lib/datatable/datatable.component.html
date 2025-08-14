@@ -18,18 +18,18 @@
     </div>
   </div>
 
-  <table cdk-table [dataSource]="datasource" class="table table-striped table-hover">
+  <table cdk-table class="table table-striped table-hover" [dataSource]="datasource">
     <ng-container *ngFor="let column of displayColumns">
       <ng-container [cdkColumnDef]="column.name">
         @if (this.datasource.options.columnSort && !datasource.options.serverSide && column.sortable) {
           <th
             cdk-header-cell
-            *cdkHeaderCellDef
             sortable
+            *cdkHeaderCellDef
             [columnName]="column.name"
-            (sorted)="onColumnSort($event)"
             [className]="column.className"
             [hidden]="column.hidden"
+            (sorted)="onColumnSort($event)"
           >
             {{ column.displayName }}
           </th>
@@ -48,13 +48,13 @@
                 *ngIf="contentTemplates.length === 1; else multiTemplates"
                 [ngTemplateOutlet]="contentTemplates[0].template"
                 [ngTemplateOutletContext]="{ rowElement: element }"
-              ></ng-container>
+              />
               <ng-template #multiTemplates>
                 <ng-container
                   *ngIf="findHtmlTemplate(column.name); else noTemplateWithName"
                   [ngTemplateOutlet]="findHtmlTemplate(column.name)!.template"
                   [ngTemplateOutletContext]="{ rowElement: element }"
-                ></ng-container>
+                />
               </ng-template>
             </ng-container>
           </ng-template>
@@ -78,11 +78,11 @@
     <div class="dt-pagination-control">
       <div class="dt-control-wrapper">
         <button class="dt-btn" [disabled]="currentPage <= 1" (click)="updatePage(currentPage - 1)">Previous</button>
-        <span class="dt-btn first-page" (click)="updatePage(1)" *ngIf="currentPage > 1">1</span>
+        <span class="dt-btn first-page" *ngIf="currentPage > 1" (click)="updatePage(1)">1</span>
         <span class="dt-btn fill" *ngIf="currentPage > 2">...</span>
         <span class="dt-btn current-page">{{ currentPage }}</span>
         <span class="dt-btn fill" *ngIf="currentPage < totalPages - 1">...</span>
-        <span class="dt-btn last-page" (click)="updatePage(totalPages)" *ngIf="currentPage < totalPages">{{
+        <span class="dt-btn last-page" *ngIf="currentPage < totalPages" (click)="updatePage(totalPages)">{{
           totalPages
         }}</span>
         <button class="dt-btn" [disabled]="currentPage >= totalPages" (click)="updatePage(currentPage + 1)">

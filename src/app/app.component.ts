@@ -10,16 +10,17 @@ type TableData = {
 };
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-root',
   imports: [FormsModule, LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  protected searchText: string = '';
-  protected checked: boolean = false;
-  protected checked2: boolean = true;
-  protected datasource: DataTableDataSource<TableData> = new DataTableDataSource();
+  protected searchText = '';
+  protected checked = false;
+  protected checked2 = true;
+  protected datasource = new DataTableDataSource<TableData>();
   protected displayedColumns: DataTableColumn<TableData>[] = [
     { name: 'title', displayName: 'Title', property: 'title', sortable: true },
     { name: 'description', displayName: 'Description', property: 'description', sortable: true },

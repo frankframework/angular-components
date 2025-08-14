@@ -10,10 +10,10 @@ import { AutoFocusDirective } from '../auto-focus.directive';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input({ transform: booleanAttribute }) toggleable: boolean = false;
-  @Input({ transform: booleanAttribute }) active: boolean = false;
-  @Input({ transform: booleanAttribute }) autofocus: boolean = false;
+  @Input({ transform: booleanAttribute }) disabled = false;
+  @Input({ transform: booleanAttribute }) toggleable = false;
+  @Input({ transform: booleanAttribute }) active = false;
+  @Input({ transform: booleanAttribute }) autofocus = false;
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   protected toggle(): void {

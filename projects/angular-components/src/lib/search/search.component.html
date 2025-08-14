@@ -1,15 +1,14 @@
 <label [ngClass]="{ disabled, slim }"
-  ><ff-icon-magnifier [width]="slim ? 16 : 28" [height]="slim ? 16 : 28" colour="#8A8A8A"></ff-icon-magnifier
-  ><input
+  ><ff-icon-magnifier colour="#8A8A8A" [width]="slim ? 16 : 28" [height]="slim ? 16 : 28" /><input
+    #input
     type="text"
     [placeholder]="placeholder"
     [disabled]="disabled"
     [value]="value"
+    [ffAutoFocus]="autofocus"
     (blur)="_onBlur()"
     (input)="_onInputEvent()"
     (change)="_onInteractionEvent($event)"
-    [ffAutoFocus]="autofocus"
-    #input
   />
   @if (focusKeyEnabled && !disabled) {
     <kbd>{{ focusKey }}</kbd>

@@ -21,12 +21,12 @@ export class FocusOnKeyUtil {
 
   enable(): void {
     if (!this.focusElement) console.warn('No focus element set');
-    window.addEventListener(this.config.force ? 'keydown' : 'keyup', this._onKeyEvent.bind(this));
+    globalThis.addEventListener(this.config.force ? 'keydown' : 'keyup', this._onKeyEvent.bind(this));
   }
 
   disable(): void {
-    window.removeEventListener('keydown', this._onKeyEvent);
-    window.removeEventListener('keyup', this._onKeyEvent);
+    globalThis.removeEventListener('keydown', this._onKeyEvent);
+    globalThis.removeEventListener('keyup', this._onKeyEvent);
   }
 
   private _onKeyEvent(event: KeyboardEvent): void {
