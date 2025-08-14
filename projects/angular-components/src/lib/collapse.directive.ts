@@ -6,12 +6,12 @@ import { Directive, HostListener, Input, booleanAttribute, Output, EventEmitter,
 })
 export class CollapseDirective implements AfterViewInit {
   @Input({ required: true }) collapse!: HTMLElement;
-  @Input({ transform: booleanAttribute }) collapsed: boolean = false;
-  @Input() animationSpeed: number = 300;
+  @Input({ transform: booleanAttribute }) collapsed = false;
+  @Input() animationSpeed = 300;
   @Output() collapsedChange = new EventEmitter<boolean>();
 
   private collapseAnimation: Animation | null = null;
-  private clientHeight: number = 0;
+  private clientHeight = 0;
 
   ngAfterViewInit(): void {
     this.setInitialState();
