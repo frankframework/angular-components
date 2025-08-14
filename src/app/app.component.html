@@ -1,8 +1,8 @@
 <h1>FF Components</h1>
 <ul class="components-list">
   <li>
-    <h2>Button</h2>
-    <div class="components">
+    <h2 [collapse]="buttons">Button</h2>
+    <div class="components" #buttons>
       <ff-button>Click me!</ff-button>
       <ff-button><app-svg-add-icon colour="#fff" [width]="16" [height]="16" /> Click me!</ff-button>
       <ff-button active="true">Active</ff-button>
@@ -11,8 +11,8 @@
     </div>
   </li>
   <li>
-    <h2>Checkbox</h2>
-    <div class="components">
+    <h2 [collapse]="checkboxes">Checkbox</h2>
+    <div class="components" #checkboxes>
       <ff-checkbox [(ngModel)]="checked" />
       <ff-checkbox [(ngModel)]="checked2" />
       <ff-checkbox checked />
@@ -22,8 +22,8 @@
     <p>Checkbox 1: {{ checked }}, checkbox 2: {{ checked2 }}</p>
   </li>
   <li>
-    <h2>Search</h2>
-    <div class="components">
+    <h2 [collapse]="search">Search</h2>
+    <div class="components" #search>
       <ff-search style="width: 100%" forceFocus autofocus [(ngModel)]="searchText" />
       <div class="separator">
         <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%" />
@@ -35,8 +35,8 @@
     <ff-button (click)="changeSearchQuery()">Update search query</ff-button>
   </li>
   <li>
-    <h2>Alert</h2>
-    <div class="components">
+    <h2 [collapse]="alerts">Alert</h2>
+    <div class="components" #alerts>
       <ff-alert type="info">Info</ff-alert>
       <ff-alert type="success">Success</ff-alert>
       <ff-alert type="warning">Warning</ff-alert>
@@ -64,8 +64,8 @@
     </div>
   </li>
   <li>
-    <h2>Chip</h2>
-    <div class="components">
+    <h2 [collapse]="chips">Chip</h2>
+    <div class="components" #chips>
       <ff-chip rounded>L</ff-chip>
       <ff-chip>Label</ff-chip>
       <ff-chip colour="#345678" rounded>Colour!</ff-chip>
