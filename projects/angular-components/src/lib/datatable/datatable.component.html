@@ -78,11 +78,11 @@
     <div class="dt-pagination-control">
       <div class="dt-control-wrapper">
         <button class="dt-btn" [disabled]="currentPage <= 1" (click)="updatePage(currentPage - 1)">Previous</button>
-        <span class="dt-btn first-page" *ngIf="currentPage > 1" (click)="updatePage(1)">1</span>
+        <span tabindex="0" class="dt-btn first-page" *ngIf="currentPage > 1" (click)="updatePage(1)">1</span>
         <span class="dt-btn fill" *ngIf="currentPage > 2">...</span>
         <span class="dt-btn current-page">{{ currentPage }}</span>
         <span class="dt-btn fill" *ngIf="currentPage < totalPages - 1">...</span>
-        <span class="dt-btn last-page" *ngIf="currentPage < totalPages" (click)="updatePage(totalPages)">{{
+        <span tabindex="0" class="dt-btn last-page" *ngIf="currentPage < totalPages" (click)="updatePage(totalPages)">{{
           totalPages
         }}</span>
         <button class="dt-btn" [disabled]="currentPage >= totalPages" (click)="updatePage(currentPage + 1)">

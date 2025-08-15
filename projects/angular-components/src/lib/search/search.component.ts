@@ -46,35 +46,24 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
 
-  private _value = '';
-  private _disabled = false;
   private focusKeyUtil = new FocusOnKeyUtility({
     key: '/',
     ctrl: false,
     shift: false,
     force: false,
   });
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+  private searchSubject = new Subject<string>();
 
   @Input()
-  get value(): string {
-    return this._value;
-  }
   set value(value: string) {
-    this._value = value;
     this._changeDetectorRef.markForCheck();
   }
 
   @Input({ transform: booleanAttribute })
-  get disabled(): boolean {
-    return this._disabled;
-  }
   set disabled(disabled: boolean) {
-    this._disabled = disabled;
     this._changeDetectorRef.markForCheck();
   }
-
-  private _changeDetectorRef = inject(ChangeDetectorRef);
-  private searchSubject = new Subject<string>();
 
   ngOnInit(): void {
     this.searchSubject.pipe(debounceTime(200)).subscribe((value) => {

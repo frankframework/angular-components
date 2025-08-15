@@ -87,12 +87,12 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   protected currentPage = 1;
   protected totalPages = 0;
 
+  private datasourceSubscription: Subscription = new Subscription();
+  private originalData: T[] | null = null;
+
   protected get displayedColumns(): string[] {
     return this.displayColumns.map(({ name }) => name);
   }
-
-  private datasourceSubscription: Subscription = new Subscription();
-  private originalData: T[] | null = null;
 
   ngAfterViewInit(): void {
     // needed to avoid ExpressionChangedAfterItHasBeenCheckedError

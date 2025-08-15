@@ -4,7 +4,7 @@
     <h2>Button</h2>
     <div class="components">
       <ff-button>Click me!</ff-button>
-      <ff-button><app-svg-add-icon [width]="16" [height]="16" colour="#fff"></app-svg-add-icon> Click me!</ff-button>
+      <ff-button><app-svg-add-icon colour="#fff" [width]="16" [height]="16" /> Click me!</ff-button>
       <ff-button active="true">Active</ff-button>
       <ff-button toggleable="true">Toggle me!</ff-button>
       <ff-button disabled>Disabled</ff-button>
@@ -13,22 +13,22 @@
   <li>
     <h2>Checkbox</h2>
     <div class="components">
-      <ff-checkbox [(ngModel)]="checked"></ff-checkbox>
-      <ff-checkbox [(ngModel)]="checked2"></ff-checkbox>
-      <ff-checkbox checked></ff-checkbox>
-      <ff-checkbox disabled></ff-checkbox>
-      <ff-checkbox disabled checked></ff-checkbox>
+      <ff-checkbox [(ngModel)]="checked" />
+      <ff-checkbox [(ngModel)]="checked2" />
+      <ff-checkbox checked />
+      <ff-checkbox disabled />
+      <ff-checkbox disabled checked />
     </div>
     <p>Checkbox 1: {{ checked }}, checkbox 2: {{ checked2 }}</p>
   </li>
   <li>
     <h2>Search</h2>
     <div class="components">
-      <ff-search [(ngModel)]="searchText" style="width: 100%" forceFocus autofocus></ff-search>
+      <ff-search style="width: 100%" forceFocus autofocus [(ngModel)]="searchText" />
       <div class="separator">
-        <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%"></ff-search>
-        <ff-search placeholder="Disabled" style="width: 100%" disabled></ff-search>
-        <ff-search placeholder="Slimmed down" [focusKeyEnabled]="false" slim style="width: 100%"></ff-search>
+        <ff-search placeholder="Test the focus key" focusKey="=" style="width: 100%" />
+        <ff-search placeholder="Disabled" style="width: 100%" disabled />
+        <ff-search placeholder="Slimmed down" slim style="width: 100%" [focusKeyEnabled]="false" />
       </div>
     </div>
     <p>Search query: {{ searchText }}</p>
@@ -88,7 +88,7 @@
     </div>
     <p>Without template:</p>
     <div class="components">
-      <ff-datatable [datasource]="datasource" [displayColumns]="displayedColumns"></ff-datatable>
+      <ff-datatable [datasource]="datasource" [displayColumns]="displayedColumns" />
     </div>
   </li>
 </ul>
