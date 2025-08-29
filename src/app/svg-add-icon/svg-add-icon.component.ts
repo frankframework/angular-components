@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IconBaseComponent } from 'angular-components';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-svg-add-icon',
   imports: [],
   templateUrl: './svg-add-icon.component.html',

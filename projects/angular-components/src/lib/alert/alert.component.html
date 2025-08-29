@@ -1,27 +1,17 @@
 <div class="ff-alert" [ngClass]="type">
   @switch (type) {
     @case ('info') {
-      <ff-icon-info-circle class="icon" colour="#037CD4" [width]="iconSize" [height]="iconSize"></ff-icon-info-circle>
+      <ff-icon-info-circle class="icon" colour="#037CD4" [width]="iconSize" [height]="iconSize" />
     }
     @case ('success') {
-      <ff-icon-success-circle
-        class="icon"
-        colour="#00d841"
-        [width]="iconSize"
-        [height]="iconSize"
-      ></ff-icon-success-circle>
+      <ff-icon-success-circle class="icon" colour="#00d841" [width]="iconSize" [height]="iconSize" />
     }
     @case ('error') {
-      <ff-icon-error-circle class="icon" colour="#DA0004" [width]="iconSize" [height]="iconSize"></ff-icon-error-circle>
+      <ff-icon-error-circle class="icon" colour="#DA0004" [width]="iconSize" [height]="iconSize" />
     }
     @default {
-      <ff-icon-warning-circle
-        class="icon"
-        colour="#d89400"
-        [width]="iconSize"
-        [height]="iconSize"
-      ></ff-icon-warning-circle>
+      <ff-icon-warning-circle class="icon" colour="#d89400" [width]="iconSize" [height]="iconSize" />
     }
   }
-  <span><ng-content></ng-content></span>
+  <span><ng-content /></span>
 </div>

@@ -16,7 +16,7 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
 import { IconMagnifierComponent } from '../icons/icon-magnifier/icon-magnifier.component';
 import { debounceTime, noop, Subject } from 'rxjs';
 import { NgClass } from '@angular/common';
-import { FocusOnKeyUtil } from '../utils/focus-on-key.util';
+import { FocusOnKeyUtil as FocusOnKeyUtility } from '../utils/focus-on-key.util';
 import { AutoFocusDirective } from '../auto-focus.directive';
 
 export const SEARCH_CONTROL_VALUE_ACCESSOR = {
@@ -35,46 +35,35 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
-  @Input() placeholder: string = 'Search...';
-  @Input() focusKey: string = '/';
-  @Input({ transform: booleanAttribute }) autofocus: boolean = false;
-  @Input({ transform: booleanAttribute }) forceFocus: boolean = false;
-  @Input({ transform: booleanAttribute }) focusKeyEnabled: boolean = true;
-  @Input({ transform: booleanAttribute }) slim: boolean = false;
+  @Input() placeholder = 'Search...';
+  @Input() focusKey = '/';
+  @Input({ transform: booleanAttribute }) autofocus = false;
+  @Input({ transform: booleanAttribute }) forceFocus = false;
+  @Input({ transform: booleanAttribute }) focusKeyEnabled = true;
+  @Input({ transform: booleanAttribute }) slim = false;
   @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
 
-  private _value: string = '';
-  private _disabled: boolean = false;
-  private focusKeyUtil = new FocusOnKeyUtil({
+  private focusKeyUtil = new FocusOnKeyUtility({
     key: '/',
     ctrl: false,
     shift: false,
     force: false,
   });
+  private _changeDetectorRef = inject(ChangeDetectorRef);
+  private searchSubject = new Subject<string>();
 
   @Input()
-  get value(): string {
-    return this._value;
-  }
   set value(value: string) {
-    this._value = value;
     this._changeDetectorRef.markForCheck();
   }
 
   @Input({ transform: booleanAttribute })
-  get disabled(): boolean {
-    return this._disabled;
-  }
   set disabled(disabled: boolean) {
-    this._disabled = disabled;
     this._changeDetectorRef.markForCheck();
   }
-
-  private _changeDetectorRef = inject(ChangeDetectorRef);
-  private searchSubject: Subject<string> = new Subject();
 
   ngOnInit(): void {
     this.searchSubject.pipe(debounceTime(200)).subscribe((value) => {

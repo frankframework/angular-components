@@ -1,13 +1,11 @@
-<label (click)="_onClick($event)">
-  <span class="content"><ng-content></ng-content></span>
+<label tabindex="0" (click)="_onClick($event)">
+  <span class="content"><ng-content /></span>
   <input
     type="checkbox"
     [disabled]="disabled"
+    [ffAutoFocus]="autofocus"
     [(ngModel)]="checked"
     (ngModelChange)="_onChange(this.checked)"
-    [ffAutoFocus]="autofocus"
   />
-  <span class="check-box"
-    ><ff-icon-check width="18" height="18" [colour]="colour" class="check-mark"></ff-icon-check
-  ></span>
+  <span class="check-box"><ff-icon-check width="18" height="18" class="check-mark" [colour]="colour" /></span>
 </label>

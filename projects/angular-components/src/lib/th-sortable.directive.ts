@@ -55,7 +55,7 @@ export function basicAnyValueTableSort<T>(
   standalone: true,
 })
 export class ThSortableDirective {
-  @Input() columnName: string = '';
+  @Input() columnName = '';
   @Input() direction: SortDirection = 'NONE';
   @Output() sorted = new EventEmitter<SortEvent>();
 

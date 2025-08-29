@@ -80,19 +80,19 @@ export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   @ViewChildren(ThSortableDirective) sortableHeaders!: QueryList<ThSortableDirective>;
   @ContentChildren(DtContentDirective) protected content!: QueryList<DtContentDirective<T>>;
   protected contentTemplates: ContentTemplate<T>[] = [];
-  protected totalFilteredEntries: number = 0;
-  protected totalEntries: number = 0;
-  protected minPageEntry: number = 0;
-  protected maxPageEntry: number = 0;
-  protected currentPage: number = 1;
-  protected totalPages: number = 0;
+  protected totalFilteredEntries = 0;
+  protected totalEntries = 0;
+  protected minPageEntry = 0;
+  protected maxPageEntry = 0;
+  protected currentPage = 1;
+  protected totalPages = 0;
+
+  private datasourceSubscription: Subscription = new Subscription();
+  private originalData: T[] | null = null;
 
   protected get displayedColumns(): string[] {
     return this.displayColumns.map(({ name }) => name);
   }
-
-  private datasourceSubscription: Subscription = new Subscription();
-  private originalData: T[] | null = null;
 
   ngAfterViewInit(): void {
     // needed to avoid ExpressionChangedAfterItHasBeenCheckedError
@@ -218,7 +218,9 @@ export class DataTableDataSource<T> extends DataSource<T> {
     return this._renderData;
   }
 
-  disconnect(): void {}
+  disconnect(): void {
+    /* noop */
+  }
 
   getEntriesInfo(): Observable<DataTableEntryInfo> {
     return this._entriesInfo$;

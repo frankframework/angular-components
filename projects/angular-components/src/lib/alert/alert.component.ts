@@ -25,5 +25,5 @@ export type AlertType = (typeof ALERT_TYPES)[number];
 })
 export class AlertComponent {
   @Input() type: AlertType = ALERT_TYPES[2];
-  protected iconSize: number = 18;
+  protected iconSize = 18;
 }

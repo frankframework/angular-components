@@ -20,10 +20,10 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
   providers: [FF_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input({ transform: booleanAttribute }) disabled: boolean = false;
-  @Input({ transform: booleanAttribute }) checked: boolean = false;
-  @Input({ transform: booleanAttribute }) autofocus: boolean = false;
-  @Input() colour: string = '#000';
+  @Input({ transform: booleanAttribute }) disabled = false;
+  @Input({ transform: booleanAttribute }) checked = false;
+  @Input({ transform: booleanAttribute }) autofocus = false;
+  @Input() colour = '#000';
   // @Input() backgroundColour: string = '#FDC300';
 
   protected _onChange: (value: boolean) => void = noop;
