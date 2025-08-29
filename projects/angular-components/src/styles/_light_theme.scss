@@ -126,3 +126,8 @@ th[sortable] {
     right: 0;
   }
 }
+
+.collapsed {
+  height: 0;
+  overflow: hidden;
+}

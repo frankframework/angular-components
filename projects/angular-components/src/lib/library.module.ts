@@ -7,6 +7,7 @@ import { DatatableComponent } from './datatable/datatable.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { DtContentDirective } from './datatable/dt-content.directive';
 import { ThSortableDirective } from './th-sortable.directive';
+import { CollapseDirective } from './collapse.directive';
 
 const components = [
   ButtonComponent,
@@ -16,6 +17,7 @@ const components = [
   DatatableComponent,
   CheckboxComponent,
   DtContentDirective,
+  CollapseDirective,
   ThSortableDirective,
 ];
 
