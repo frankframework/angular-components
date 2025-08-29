@@ -45,6 +45,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
+  protected _value: string = '';
 
   private focusKeyUtil = new FocusOnKeyUtility({
     key: '/',
@@ -57,6 +58,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
 
   @Input()
   set value(value: string) {
+    this._value = value;
     this._changeDetectorRef.markForCheck();
   }
 
