@@ -1,4 +1,14 @@
-import { Directive, HostListener, Input, booleanAttribute, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  Input,
+  booleanAttribute,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  inject,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[collapse]',
@@ -12,6 +22,7 @@ export class CollapseDirective implements AfterViewInit {
 
   private collapseAnimation: Animation | null = null;
   private clientHeight = 0;
+  private readonly renderer: Renderer2 = inject(Renderer2);
 
   ngAfterViewInit(): void {
     this.setInitialState();
@@ -41,7 +52,7 @@ export class CollapseDirective implements AfterViewInit {
   private setInitialState(): void {
     if (this.collapsed) {
       this.clientHeight = this.collapse.clientHeight;
-      this.collapse.classList.add('collapsed');
+      this.renderer.addClass(this.collapse, 'collapsed')
     }
   }
 
@@ -53,10 +64,10 @@ export class CollapseDirective implements AfterViewInit {
     );
     this.collapseAnimation.finished
       .then(() => {
-        this.collapse.classList.add('collapsed');
+        this.renderer.addClass(this.collapse, 'collapsed')
       })
       .finally(() => {
-        this.collapse.classList.remove('transforming');
+        this.renderer.removeClass(this.collapse, 'transforming');
         this.collapseAnimation = null;
       });
   }
@@ -68,7 +79,7 @@ export class CollapseDirective implements AfterViewInit {
     );
     this.collapseAnimation.finished
       .then(() => {
-        this.collapse.classList.remove('collapsed');
+        this.renderer.removeClass(this.collapse, 'collapsed');
       })
       .finally(() => {
         this.collapseAnimation = null;
