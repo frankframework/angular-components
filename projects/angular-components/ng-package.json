@@ -12,13 +12,8 @@
     },
     {
       "input": "src",
-      "glob": "_index.css",
+      "glob": "*.css",
       "output": "."
-    },
-    {
-      "input": "src/styles",
-      "glob": "**/*.css",
-      "output": "styles"
     }
   ]
 }
