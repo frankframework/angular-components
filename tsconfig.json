@@ -23,7 +23,7 @@
       "dom"
     ],
     "paths": {
-      "angular-components": [
+      "@frankframework/angular-components": [
         "./dist/angular-components"
       ]
     }

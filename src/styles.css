@@ -1,6 +1,5 @@
 @import "tailwindcss";
-/*@source '../dist/angular-components';*/
-/* TODO import theme only */
+@import '../dist/angular-components/index.css';
 
 app-root {
   font-family: 'Inter', sans-serif;
