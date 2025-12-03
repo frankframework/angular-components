@@ -1,8 +1,18 @@
 @import "./theme.css";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.ff-dark-theme, .ff-dark-theme *));
 
-ff-* {
-  @apply text-text;
-  @apply bg-background;
+th[sortable] {
+  position: relative;
+  cursor: pointer;
+
+  span.sort-icon {
+    position: absolute;
+    right: 0;
+  }
+}
+
+.collapsed {
+  height: 0;
+  overflow: hidden;
 }

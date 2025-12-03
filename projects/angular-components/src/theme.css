@@ -25,6 +25,7 @@
   /*--ff-border-yellow: #D3A200;*/
 }
 
+/* This doesnt work */
 @layer base {
   @variant dark {
     --color-text: #1E1E1E;
