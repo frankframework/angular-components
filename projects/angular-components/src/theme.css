@@ -3,7 +3,9 @@
 
   --color-brand: #FDC300;
   --color-text: #FFFFFF;
+  --color-text-dark: #1E1E1E;
   --color-background: #343434;
+  --color-background-dark: #FAFAFA;
 
   --color-alert-info: #037CD4;
   --color-alert-success: #00d841;
@@ -23,12 +25,4 @@
 
   /*--ff-border-gray: #626262;*/
   /*--ff-border-yellow: #D3A200;*/
-}
-
-/* This doesnt work */
-@layer base {
-  @variant dark {
-    --color-text: #1E1E1E;
-    --color-background: #FAFAFA;
-  }
 }

@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import '../dist/angular-components/index.css';
 
+body {
+  padding: 5px;
+}
+
 app-root {
   font-family: 'Inter', sans-serif;
 
