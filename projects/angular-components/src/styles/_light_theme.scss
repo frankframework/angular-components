@@ -1,49 +1,5 @@
 @use './variables';
 
-ff-button *,
-ff-search *,
-ff-alert *,
-ff-chip *,
-ff-datatable * {
-  font-family: Inter, sans-serif;
-  box-sizing: border-box;
-}
-
-ff-button > button {
-  color: variables.$ff-color-light;
-  background-color: variables.$ff-bgcolor-dark-gray;
-  border-color: variables.$ff-bgcolor-dark-gray;
-
-  &:hover {
-    color: variables.$ff-color-dark;
-    background-color: variables.$ff-bgcolor-yellow;
-  }
-
-  &:active:not(:disabled) {
-    color: variables.$ff-color-dark;
-    background-color: variables.$ff-bgcolor-yellow;
-    border: 2px solid variables.$ff-border-yellow;
-  }
-
-  &:disabled {
-    color: variables.$ff-color-gray;
-    background-color: variables.$ff-bgcolor-gray;
-    border-color: variables.$ff-bgcolor-gray;
-  }
-
-  &.active {
-    color: variables.$ff-color-dark;
-    background-color: transparent;
-    border: 2px dashed variables.$ff-border-gray;
-
-    &:hover {
-      color: variables.$ff-color-dark;
-      background-color: variables.$ff-bgcolor-yellow;
-      border-color: variables.$ff-bgcolor-yellow;
-    }
-  }
-}
-
 ff-search > label {
   color: variables.$ff-color-gray;
   background-color: variables.$ff-bgcolor-white;
@@ -64,38 +20,6 @@ ff-search > label {
   kbd {
     color: variables.$ff-color-gray;
     border: 1px solid variables.$ff-border-gray;
-  }
-}
-
-$ff-alert-light-opacity: 0.1;
-$ff-alert-light-border-opacity: 0.2;
-
-ff-alert > .ff-alert {
-  color: variables.$ff-color-dark;
-  border: solid variables.$ff-border-gray;
-
-  &.info {
-    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-info, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-info;
-    background-color: variables.hex-with-opacity(variables.$ff-alert-info, $ff-alert-light-opacity);
-  }
-
-  &.success {
-    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-success, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-success;
-    background-color: variables.hex-with-opacity(variables.$ff-alert-success, $ff-alert-light-opacity);
-  }
-
-  &.warning {
-    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-warning, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-warning;
-    background-color: variables.hex-with-opacity(variables.$ff-alert-warning, $ff-alert-light-opacity);
-  }
-
-  &.error {
-    $light-border-side: variables.hex-with-opacity(variables.$ff-alert-error, $ff-alert-light-border-opacity);
-    border-color: $light-border-side $light-border-side $light-border-side variables.$ff-alert-error;
-    background-color: variables.hex-with-opacity(variables.$ff-alert-error, $ff-alert-light-opacity);
   }
 }
 

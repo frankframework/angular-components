@@ -7,7 +7,6 @@ import { AutoFocusDirective } from '../auto-focus.directive';
   standalone: true,
   imports: [CommonModule, AutoFocusDirective],
   templateUrl: './button.component.html',
-  styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
   @Input({ transform: booleanAttribute }) disabled = false;
