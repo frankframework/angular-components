@@ -1,5 +1,4 @@
 import { booleanAttribute, ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
-import { IconCheckComponent } from '../icons/icon-check/icon-check.component';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { noop } from 'rxjs';
 import { AutoFocusDirective } from '../auto-focus.directive';
@@ -13,9 +12,8 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
 @Component({
   selector: 'ff-checkbox',
   standalone: true,
-  imports: [FormsModule, IconCheckComponent, AutoFocusDirective],
+  imports: [FormsModule, AutoFocusDirective],
   templateUrl: './checkbox.component.html',
-  styleUrl: './checkbox.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [FF_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })

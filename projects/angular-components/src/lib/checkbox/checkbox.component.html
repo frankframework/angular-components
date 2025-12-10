@@ -1,11 +1,11 @@
-<label tabindex="0" (click)="_onClick($event)">
-  <span class="content"><ng-content /></span>
+<label class="inline-flex w-full" tabindex="0" (click)="_onClick($event)">
+  <span class="flex-1"><ng-content /></span>
   <input
+    class="w-[18px] h-[18px] border border-solid border-[#B2B2B2] rounded accent-active"
     type="checkbox"
     [disabled]="disabled"
     [ffAutoFocus]="autofocus"
     [(ngModel)]="checked"
     (ngModelChange)="_onChange(this.checked)"
   />
-  <span class="check-box"><ff-icon-check width="18" height="18" class="check-mark" [colour]="colour" /></span>
 </label>
