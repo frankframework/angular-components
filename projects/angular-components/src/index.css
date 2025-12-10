@@ -19,7 +19,6 @@
   .ff-alert {
     @apply border-[#626262];
   }
-
   .ff-alert-info {
     @apply border-t-alert-info/20 border-r-alert-info/20 border-b-alert-info/20  border-l-alert-info bg-alert-info/10;
   }
@@ -31,6 +30,16 @@
   }
   .ff-alert-error {
     @apply border-t-alert-error/20 border-r-alert-error/20 border-b-alert-error/20  border-l-alert-error bg-alert-error/10;
+  }
+
+  .ff-chip {
+    @apply border border-solid border-[#626262] px-2 py-1 rounded-lg;
+  }
+  .ff-chip-rounded {
+    @apply px-4 py-1 rounded-full;
+  }
+  .ff-chip-slim {
+    @apply leading-none;
   }
 }
 
