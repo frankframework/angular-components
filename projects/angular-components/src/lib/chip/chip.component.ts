@@ -6,7 +6,6 @@ import { NgClass, NgStyle } from '@angular/common';
   standalone: true,
   imports: [NgStyle, NgClass],
   templateUrl: './chip.component.html',
-  styleUrl: './chip.component.scss',
 })
 export class ChipComponent {
   @Input({ transform: booleanAttribute }) rounded = false;

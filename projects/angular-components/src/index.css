@@ -41,6 +41,29 @@
   .ff-chip-slim {
     @apply leading-none;
   }
+
+  ff-search {
+    @apply inline-block;
+  }
+
+  .ff-search {
+    @apply px-4 py-2.5 text-xl bg-background-dark border border-solid border-[#D8D8D8] disabled:bg-[#D8D8D8];
+
+    &.disabled {
+      @apply bg-[#D8D8D8];
+    }
+    &.slim {
+      @apply px-3 py-1.5 text-xs;
+
+      kbd {
+        @apply text-[8px];
+      }
+    }
+
+    kbd {
+      @apply text-lg border border-solid border-[#D8D8D8];
+    }
+  }
 }
 
 th[sortable] {
