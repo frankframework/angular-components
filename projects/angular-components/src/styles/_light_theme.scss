@@ -1,28 +1,5 @@
 @use './variables';
 
-ff-search > label {
-  color: variables.$ff-color-gray;
-  background-color: variables.$ff-bgcolor-white;
-  border: 1px solid variables.$ff-bgcolor-gray;
-
-  &.disabled {
-    background-color: variables.$ff-bgcolor-gray;
-  }
-
-  input {
-    color: inherit;
-
-    &::placeholder {
-      color: variables.hex-with-opacity(variables.$ff-color-gray, 0.75);
-    }
-  }
-
-  kbd {
-    color: variables.$ff-color-gray;
-    border: 1px solid variables.$ff-border-gray;
-  }
-}
-
 ff-datatable > .dt-wrapper {
   color: variables.$ff-color-dark;
 
@@ -35,19 +12,4 @@ ff-datatable > .dt-wrapper {
     border: 1px solid variables.$ff-border-gray;
     border-width: 1px 0;
   }
-}
-
-th[sortable] {
-  position: relative;
-  cursor: pointer;
-
-  span.sort-icon {
-    position: absolute;
-    right: 0;
-  }
-}
-
-.collapsed {
-  height: 0;
-  overflow: hidden;
 }
