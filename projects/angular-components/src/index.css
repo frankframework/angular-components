@@ -86,7 +86,7 @@
     }
     .dt-btn {
       @apply inline-block px-2.5 py-1 border-none outline-none bg-inherit;
-      @apply hover:not-[.fill]: bg-[#e0e0e0];
+      @apply hover:not-[.fill]:bg-[#e0e0e0];
 
       &.current-page {
         @apply bg-[#e0e0e0];

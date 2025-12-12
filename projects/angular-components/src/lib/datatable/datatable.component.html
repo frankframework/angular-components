@@ -77,7 +77,7 @@
     </div>
     <!--    dt-pagination-control -->
     <div class="flex-1">
-      <div class="border border-solid border-[#bdbfc2] rounded">
+      <div class="border border-solid border-[#bdbfc2] rounded float-right">
         <button class="dt-btn" [disabled]="currentPage <= 1" (click)="updatePage(currentPage - 1)">Previous</button>
         <span tabindex="0" class="dt-btn first-page" *ngIf="currentPage > 1" (click)="updatePage(1)">1</span>
         <span class="dt-btn fill" *ngIf="currentPage > 2">...</span>
