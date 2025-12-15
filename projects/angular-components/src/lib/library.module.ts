@@ -8,14 +8,16 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { DtContentDirective } from './datatable/dt-content.directive';
 import { ThSortableDirective } from './th-sortable.directive';
 import { CollapseDirective } from './collapse.directive';
+import { Combobox } from './combobox/combobox.component';
 
 const components = [
-  ButtonComponent,
-  SearchComponent,
   AlertComponent,
-  ChipComponent,
-  DatatableComponent,
+  ButtonComponent,
   CheckboxComponent,
+  ChipComponent,
+  Combobox,
+  DatatableComponent,
+  SearchComponent,
   DtContentDirective,
   CollapseDirective,
   ThSortableDirective,

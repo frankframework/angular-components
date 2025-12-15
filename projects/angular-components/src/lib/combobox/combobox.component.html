@@ -1,0 +1,56 @@
+<div class="relative">
+  <div class="flex items-center">
+    <input
+      type="text"
+      placeholder="Select one..."
+      class="combobox-input w-full py-2 px-4 leading-none border rounded-full bg-neutral-100 outline-none placeholder:text-foreground-muted"
+      [name]="name"
+      [id]="id"
+      [disabled]="disabled"
+      [ngClass]="{
+        'rounded-t-2xl rounded-b-none border-border border-b-transparent': listShown,
+        'border-transparent': !listShown,
+        'border-solid border-red-500': showError,
+      }"
+      [(ngModel)]="input"
+      (ngModelChange)="onUpdateInput()"
+      (blur)="hideListDisplay()"
+      (focus)="showListDisplay()"
+      (click)="showListDisplay()"
+    />
+    <div #comboboxDropdownIcon class="absolute right-4 pointer-events-none text-xs">&#118;</div>
+  </div>
+  @if (listShown) {
+    <div
+      #comboboxOptions
+      class="absolute bg-neutral-100 border border-t-0 border-border rounded-bl-2xl rounded-br-2xl m-h-[200px] w-full overflow-y-auto shadow[0 2px 3px 3px #0001] z-1"
+    >
+      @for (item of filteredOptions; track item.label; let i = $index) {
+        <div
+          class="list-item py-[5px] px-[15px]"
+          [ngClass]="{ 'text-foreground-active': i === selectedIndex }"
+          (mousedown)="clickItem(i); $event.preventDefault()"
+        >
+          <div>{{ item.label }}</div>
+          @if (item.description) {
+            <div class="text-[0.8em]">{{ item.description }}</div>
+          }
+        </div>
+      }
+      @if (!filteredOptions.length) {
+        <div class="list-item py-[5px] px-[15px] italic">No results</div>
+      }
+      @if (input) {
+        <div
+          class="list-item py-[5px] px-[15px] font-bold text-red-400"
+          (mousedown)="clearSelectedItem(); $event.preventDefault()"
+        >
+          &times; clear
+        </div>
+      }
+    </div>
+  }
+</div>
+@if (showError) {
+  <i class="text-red-400">Invalid Selection</i>
+}
