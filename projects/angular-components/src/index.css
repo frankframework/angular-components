@@ -123,9 +123,21 @@
         @apply cursor-not-allowed;
       }
     }
-    
+
     @variant dark  {
       @apply text-text;
+
+      select, input {
+        @apply bg-black;
+      }
+
+      .dt-btn {
+        @apply bg-black hover:not-[.fill]:bg-background;
+
+        &.current-page {
+          @apply bg-background;
+        }
+      }
     }
   }
 }
