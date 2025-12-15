@@ -35,6 +35,20 @@
     <ff-button (click)="changeSearchQuery()">Update search query</ff-button>
   </li>
   <li>
+    <h2 [collapse]="combobox">Combobox & Dropdown</h2>
+    <div #combobox class="components">
+      <ff-combobox
+        class="w-3xs"
+        [options]="[
+          { label: 'womp', description: 'womp womp' },
+          { label: 'mrrrp', description: 'test' },
+        ]"
+      />
+    </div>
+    <p>Search query: {{ searchText }}</p>
+    <ff-button (click)="changeSearchQuery()">Update search query</ff-button>
+  </li>
+  <li>
     <h2 [collapse]="alerts">Alert</h2>
     <div #alerts class="components">
       <ff-alert type="info">Info</ff-alert>
