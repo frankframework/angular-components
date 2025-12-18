@@ -1,16 +1,19 @@
-<label [ngClass]="{ disabled, slim }"
-  ><ff-icon-magnifier colour="#8A8A8A" [width]="slim ? 16 : 28" [height]="slim ? 16 : 28" /><input
+<label
+  class="ff-search inline-flex w-full rounded-full items-center gap-2 font-medium text-[#8A8A8A]"
+  [ngClass]="{ disabled: _disabled, slim }"
+  ><ff-icon-magnifier colour="#8A8A8A" [width]="slim ? 12 : 20" [height]="slim ? 12 : 20" /><input
     #input
     type="text"
+    class="w-full flex-[1_1_auto] p-0 border-[initial] bg-inherit text-inherit leading-none font-medium outline-none disabled:cursor-not-allowed placeholder:text-[#8A8A8A]/75"
     [placeholder]="placeholder"
-    [disabled]="disabled"
+    [disabled]="_disabled"
     [value]="_value"
     [ffAutoFocus]="autofocus"
     (blur)="_onBlur()"
     (input)="_onInputEvent()"
     (change)="_onInteractionEvent($event)"
   />
-  @if (focusKeyEnabled && !disabled) {
-    <kbd>{{ focusKey }}</kbd>
+  @if (focusKeyEnabled && !_disabled) {
+    <kbd class="p-0.5 rounded leading-none">{{ focusKey }}</kbd>
   }
 </label>

@@ -1,4 +1,12 @@
-<div class="ff-alert" [ngClass]="type">
+<div
+  class="ff-alert flex w-full px-5 py-3 border-t border-r border-b border-l-6 border-solid rounded-md items-center justify-center gap-2 text-base font-semibold"
+  [ngClass]="{
+    'ff-alert-info': type === 'info',
+    'ff-alert-success': type === 'success',
+    'ff-alert-warning': type === 'warning',
+    'ff-alert-error': type === 'error',
+  }"
+>
   @switch (type) {
     @case ('info') {
       <ff-icon-info-circle class="icon" colour="#037CD4" [width]="iconSize" [height]="iconSize" />
@@ -13,5 +21,5 @@
       <ff-icon-warning-circle class="icon" colour="#d89400" [width]="iconSize" [height]="iconSize" />
     }
   }
-  <span><ng-content /></span>
+  <span class="flex-[1_1_100%]"><ng-content /></span>
 </div>

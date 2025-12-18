@@ -30,7 +30,6 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   standalone: true,
   imports: [FormsModule, NgClass, IconMagnifierComponent, AutoFocusDirective],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
@@ -45,7 +44,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
-  protected _value: string = '';
+  protected _value = '';
+  protected _disabled = false;
 
   private focusKeyUtil = new FocusOnKeyUtility({
     key: '/',
@@ -64,6 +64,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
 
   @Input({ transform: booleanAttribute })
   set disabled(disabled: boolean) {
+    this._disabled = disabled;
     this._changeDetectorRef.markForCheck();
   }
 

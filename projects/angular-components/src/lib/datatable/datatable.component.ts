@@ -71,7 +71,6 @@ type ContentTemplate<T> = {
   standalone: true,
   imports: [CommonModule, FormsModule, CdkTableModule, ThSortableDirective],
   templateUrl: './datatable.component.html',
-  styleUrl: './datatable.component.scss',
 })
 export class DatatableComponent<T> implements AfterViewInit, OnDestroy {
   @Input({ required: true }) public datasource!: DataTableDataSource<T>;

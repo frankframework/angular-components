@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataTableColumn, DataTableDataSource, LibraryModule } from 'angular-components';
+import { DataTableColumn, DataTableDataSource, LibraryModule } from '@frankframework/angular-components';
 import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
 import { FormsModule } from '@angular/forms';
 

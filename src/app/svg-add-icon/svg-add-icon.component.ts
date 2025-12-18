@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IconBaseComponent } from 'angular-components';
+import { IconBaseComponent } from '@frankframework/angular-components';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
