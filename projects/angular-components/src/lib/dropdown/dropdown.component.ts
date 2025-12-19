@@ -20,12 +20,12 @@ export type Option = {
 };
 
 @Component({
-  selector: 'ff-combobox',
+  selector: 'ff-dropdown',
   imports: [NgClass, FormsModule, IconAltArrowDownComponent],
   standalone: true,
-  templateUrl: './combobox.component.html',
+  templateUrl: './dropdown.component.html',
 })
-export class Combobox implements OnInit, OnChanges {
+export class Dropdown implements OnInit, OnChanges {
   @Input({ required: true }) options!: Option[];
   @Input() required = true;
   @Input() name = '';

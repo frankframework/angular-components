@@ -6,6 +6,6 @@ import { IconBaseComponent } from '../icon-base';
   standalone: true,
   imports: [],
   templateUrl: './icon-info-circle.component.html',
-  styleUrl: '../icons.component.scss',
+  styleUrl: '../icons.component.css',
 })
 export class IconInfoCircleComponent extends IconBaseComponent {}
