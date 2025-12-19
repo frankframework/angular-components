@@ -2,6 +2,7 @@ import { Component, Input, numberAttribute } from '@angular/core';
 
 @Component({
   template: '',
+  styleUrl: './icons.component.css',
   standalone: true,
 })
 export abstract class IconBaseComponent {
