@@ -1,6 +1,6 @@
 {
   "name": "@frankframework/angular-components",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A collection of reusable components designed for use in Frank!Framework projects",
   "author": "Vivy Booman",
   "license": "Apache-2.0",
@@ -15,12 +15,12 @@
       "style": "./index.css"
     },
     "./index.css": {
-      "default": "./index.css",
-      "style": "./index.css"
+      "style": "./index.css",
+      "default": "./index.css"
     },
     "./bundle.css": {
-      "default": "./bundle.css",
-      "style": "./bundle.css"
+      "style": "./bundle.css",
+      "default": "./bundle.css"
     }
   },
   "peerDependencies": {
