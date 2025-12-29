@@ -1,12 +1,22 @@
-import { HostListener, SimpleChanges } from '@angular/core';
-import { Option } from './combobox.component';
+import { ElementRef, EventEmitter } from '@angular/core';
 
-export class ComboboxBase {
+export type Option = {
+  label: string;
+  description?: string;
+};
+
+export abstract class ComboboxBase {
   protected input = '';
   protected filteredOptions: Option[] = [];
   protected selectedIndex = -1;
   protected listShown = false;
   protected showError = false;
+
+  public abstract options: Option[];
+  public abstract selectedOption?: string;
+  public abstract selectedOptionChange: EventEmitter<string>;
+  public abstract required: boolean;
+  public abstract comboboxOptionsRef: ElementRef;
 
   protected showListDisplay(): void {
     if (this.listShown) return;

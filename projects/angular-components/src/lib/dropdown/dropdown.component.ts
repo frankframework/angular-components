@@ -13,7 +13,7 @@ import {
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconAltArrowDownComponent } from '../icons/icon-alt-arrow-down/icon-alt-arrow-down.component';
-import { Combobox } from '../combobox/combobox.component';
+import { ComboboxBase } from '../combobox/combobox-base';
 
 export type Option = {
   label: string;
@@ -26,7 +26,7 @@ export type Option = {
   standalone: true,
   templateUrl: './dropdown.component.html',
 })
-export class Dropdown extends Combobox implements OnInit, OnChanges {
+export class Dropdown extends ComboboxBase implements OnInit, OnChanges {
   @Input({ required: true }) options!: Option[];
   @Input() required = true;
   @Input() name = '';

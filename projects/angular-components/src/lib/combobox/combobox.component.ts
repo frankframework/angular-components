@@ -13,12 +13,7 @@ import {
 import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IconAltArrowDownComponent } from '../icons/icon-alt-arrow-down/icon-alt-arrow-down.component';
-import { ComboboxBase } from './combobox-base';
-
-export type Option = {
-  label: string;
-  description?: string;
-};
+import { ComboboxBase, Option } from './combobox-base';
 
 @Component({
   selector: 'ff-combobox',
