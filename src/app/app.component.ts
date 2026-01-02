@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
   protected searchText = '';
   protected checked = false;
   protected checked2 = true;
+  protected comboboxValue = '';
+  protected dropdownValue = '';
   protected datasource = new DataTableDataSource<TableData>();
   protected displayedColumns: DataTableColumn<TableData>[] = [
     { name: 'title', displayName: 'Title', property: 'title', sortable: true },

@@ -38,6 +38,8 @@ export class Dropdown extends ComboboxBase implements OnInit, OnChanges {
   @ViewChild('comboboxOptions') comboboxOptionsRef!: ElementRef;
   @ViewChild('comboboxDropdownIcon') comboboxDropdownIcon!: ElementRef;
 
+  private lastSelectedIndex = 0;
+
   @HostListener('keydown.enter', ['$event'])
   protected onEnter(event: Event): void {
     event.preventDefault();
@@ -68,6 +70,18 @@ export class Dropdown extends ComboboxBase implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedOption']) {
       this.input = changes['selectedOption'].currentValue ?? '';
+    }
+  }
+  protected override hideListDisplay(): void {
+    this.lastSelectedIndex = this.selectedIndex > -1 ? this.selectedIndex : 0;
+    super.hideListDisplay();
+  }
+
+  protected override validateInput(): void {
+    super.validateInput();
+    if (this.showError) {
+      debugger;
+      this.selectItem(this.lastSelectedIndex);
     }
   }
 }

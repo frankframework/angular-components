@@ -43,10 +43,19 @@
           { label: 'womp', description: 'womp womp' },
           { label: 'mrrrp', description: 'test' },
         ]"
+        (selectedOptionChange)="comboboxValue = $event"
+      />
+      <ff-dropdown
+        class="w-3xs"
+        [options]="[
+          { label: 'womp', description: 'womp womp' },
+          { label: 'mrrrp', description: 'test' },
+        ]"
+        (selectedOptionChange)="dropdownValue = $event"
       />
     </div>
-    <p>Search query: {{ searchText }}</p>
-    <ff-button (click)="changeSearchQuery()">Update search query</ff-button>
+    <p>Combobox value: {{ comboboxValue }}</p>
+    <p>Dropdown value: {{ dropdownValue }}</p>
   </li>
   <li>
     <h2 [collapse]="alerts">Alert</h2>

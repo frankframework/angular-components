@@ -9,6 +9,7 @@ import { DtContentDirective } from './datatable/dt-content.directive';
 import { ThSortableDirective } from './th-sortable.directive';
 import { CollapseDirective } from './collapse.directive';
 import { Combobox } from './combobox/combobox.component';
+import { Dropdown } from './dropdown/dropdown.component';
 
 const components = [
   AlertComponent,
@@ -17,6 +18,7 @@ const components = [
   ChipComponent,
   Combobox,
   DatatableComponent,
+  Dropdown,
   SearchComponent,
   DtContentDirective,
   CollapseDirective,

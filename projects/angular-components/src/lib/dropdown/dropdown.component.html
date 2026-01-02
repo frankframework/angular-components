@@ -37,20 +37,6 @@
           }
         </div>
       }
-      @if (!filteredOptions.length) {
-        <div class="list-item py-[5px] px-[15px] italic">No results</div>
-      }
-      @if (input) {
-        <div
-          class="list-item py-[5px] px-[15px] font-bold text-red-400"
-          (mousedown)="clearSelectedItem(); $event.preventDefault()"
-        >
-          &times; clear
-        </div>
-      }
     </div>
   }
 </div>
-@if (showError) {
-  <i class="text-red-400">Invalid Selection</i>
-}

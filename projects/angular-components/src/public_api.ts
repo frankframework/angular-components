@@ -6,6 +6,7 @@ export * from './lib/checkbox/checkbox.component';
 export * from './lib/chip/chip.component';
 export * from './lib/combobox/combobox.component';
 export * from './lib/datatable/datatable.component';
+export * from './lib/dropdown/dropdown.component';
 export * from './lib/search/search.component';
 
 export * from './lib/collapse.directive';
