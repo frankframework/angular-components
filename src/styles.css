@@ -1,9 +1,9 @@
-/*@import "tailwindcss";
-@import '../dist/angular-components/index.css';*/
-@import '../dist/angular-components/bundle.css';
+@import "tailwindcss";
+@import '../dist/angular-components/index.css';
+/*@import '../dist/angular-components/bundle.css';*/
 
 body {
-  padding: 5px!important;
+  padding: 5px;
 }
 
 app-root {
