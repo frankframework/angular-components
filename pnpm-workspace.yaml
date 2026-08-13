@@ -3,19 +3,3 @@ allowBuilds:
   esbuild: false
   lmdb: false
   msgpackr-extract: false
-minimumReleaseAgeExclude:
-  - '@angular-devkit/architect@0.2003.34 || 0.2102.21'
-  - '@angular-devkit/core@20.3.34 || 21.2.21'
-  - '@angular-devkit/schematics@20.3.34 || 21.2.21'
-  - '@angular/build@20.3.34 || 21.2.21'
-  - '@angular/cli@20.3.34 || 21.2.21'
-  - '@schematics/angular@20.3.34 || 21.2.21'
-  - '@angular/animations@21.2.20'
-  - '@angular/common@21.2.20'
-  - '@angular/compiler-cli@21.2.20'
-  - '@angular/compiler@21.2.20'
-  - '@angular/core@21.2.20'
-  - '@angular/forms@21.2.20'
-  - '@angular/platform-browser-dynamic@21.2.20'
-  - '@angular/platform-browser@21.2.20'
-  - '@angular/router@21.2.20'
