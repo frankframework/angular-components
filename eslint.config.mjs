@@ -230,8 +230,8 @@ export default defineConfig([
       ],
 
       // Angular: https://github.com/angular-eslint/angular-eslint/blob/main/packages/eslint-plugin/README.md
-      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: 'app', style: 'camelCase' }],
-      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: 'app', style: 'kebab-case' }],
+      '@angular-eslint/directive-selector': ['error', { type: 'attribute', prefix: ['app', 'ff'], style: 'camelCase' }],
+      '@angular-eslint/component-selector': ['error', { type: 'element', prefix: ['app', 'ff'], style: 'kebab-case' }],
       '@angular-eslint/prefer-on-push-component-change-detection': 'warn',
 
       // EcmaScript: https://eslint.org/docs/latest/rules/
