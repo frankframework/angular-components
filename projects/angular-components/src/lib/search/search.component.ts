@@ -80,10 +80,12 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   }
 
   ngAfterViewInit(): void {
-    if (this.focusKeyEnabled) {
-      this.focusKeyUtil.setFocusElement(this._inputElement.nativeElement);
-      this.focusKeyUtil.enable();
+    if (!this.focusKeyEnabled) {
+      return;
     }
+
+    this.focusKeyUtil.setFocusElement(this._inputElement.nativeElement);
+    this.focusKeyUtil.enable();
   }
 
   ngOnDestroy(): void {

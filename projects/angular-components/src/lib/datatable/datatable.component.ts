@@ -218,7 +218,9 @@ export class DataTableDataSource<T> extends DataSource<T> {
   }
 
   disconnect(): void {
-    /* noop */
+    /*
+    noop
+    */
   }
 
   getEntriesInfo(): Observable<DataTableEntryInfo> {

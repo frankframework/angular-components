@@ -15,8 +15,12 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
+    "target": "ES2023",
+    "module": "ESNext",
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
     "useDefineForClassFields": false,
     "paths": {
       "@frankframework/angular-components": ["./dist/angular-components"]

@@ -16,9 +16,11 @@ export class ButtonComponent {
   @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   protected toggle(): void {
-    if (this.toggleable && !this.disabled) {
-      this.active = !this.active;
-      this.activeChange.emit(this.active);
+    if (!this.toggleable || this.disabled) {
+      return;
     }
+
+    this.active = !this.active;
+    this.activeChange.emit(this.active);
   }
 }

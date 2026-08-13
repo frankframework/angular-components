@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataTableColumn, DataTableDataSource, LibraryModule } from '@frankframework/angular-components';
 import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
 import { FormsModule } from '@angular/forms';
@@ -10,11 +10,9 @@ type TableData = {
 };
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-root',
   imports: [FormsModule, LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {

@@ -30,12 +30,14 @@ export default defineConfig([
       'unicorn/name-replacements': [
         'warn',
         {
-          replacements: { configuration: false },
+          replacements: { configuration: false, util: false },
         },
       ],
       'unicorn/prefer-await': 'off', // preferably only if the function works better as async
       'unicorn/consistent-boolean-name': 'off',
       'unicorn/no-empty-file': 'off',
+      'unicorn/single-line-block-comment-style': 'off',
+      'unicorn/prefer-promise-try': 'warn',
 
       'unicorn/no-useless-template-literals': 'off', // doesnt work nice with angular templates
       'unicorn/no-incorrect-template-string-interpolation': 'off', // doesnt work nice with angular templates

@@ -93,19 +93,20 @@
     },
     "angular-components": {
       "projectType": "library",
+      "root": "projects/angular-components",
+      "sourceRoot": "projects/angular-components/src",
+      "prefix": "ff",
       "schematics": {
         "@schematics/angular:component": {
           "style": "css"
         }
       },
-      "root": "projects/angular-components",
-      "sourceRoot": "projects/angular-components/src",
-      "prefix": "ff",
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
           "options": {
-            "project": "projects/angular-components/ng-package.json"
+            "project": "projects/angular-components/ng-package.json",
+            "tsConfig": "tsconfig.lib.json"
           }
         }
       }
