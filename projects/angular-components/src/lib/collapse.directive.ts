@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[collapse]',
   standalone: true,
 })
@@ -24,15 +25,15 @@ export class CollapseDirective implements AfterViewInit {
   private clientHeight = 0;
   private readonly renderer: Renderer2 = inject(Renderer2);
 
-  ngAfterViewInit(): void {
-    this.setInitialState();
-  }
-
   @HostListener('click')
   onClick(): void {
     this.collapsed = !this.collapsed;
     this.collapsedChange.emit(this.collapsed);
     this.updateState();
+  }
+
+  ngAfterViewInit(): void {
+    this.setInitialState();
   }
 
   updateState(): void {
@@ -50,10 +51,12 @@ export class CollapseDirective implements AfterViewInit {
   }
 
   private setInitialState(): void {
-    if (this.collapsed) {
-      this.clientHeight = this.collapse.clientHeight;
-      this.renderer.addClass(this.collapse, 'collapsed')
+    if (!this.collapsed) {
+      return;
     }
+
+    this.clientHeight = this.collapse.clientHeight;
+    this.renderer.addClass(this.collapse, 'collapsed');
   }
 
   private collapseElement(): void {
@@ -64,7 +67,7 @@ export class CollapseDirective implements AfterViewInit {
     );
     this.collapseAnimation.finished
       .then(() => {
-        this.renderer.addClass(this.collapse, 'collapsed')
+        this.renderer.addClass(this.collapse, 'collapsed');
       })
       .finally(() => {
         this.renderer.removeClass(this.collapse, 'transforming');

@@ -10,7 +10,6 @@ type TableData = {
 };
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'app-root',
   imports: [FormsModule, LibraryModule, SvgAddIconComponent],
   templateUrl: './app.component.html',

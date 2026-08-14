@@ -15,17 +15,15 @@
     "experimentalDecorators": true,
     "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "useDefineForClassFields": false,
+    "target": "ES2023",
+    "module": "ESNext",
     "lib": [
-      "ES2022",
-      "dom"
+      "ES2023",
+      "DOM"
     ],
+    "useDefineForClassFields": false,
     "paths": {
-      "@frankframework/angular-components": [
-        "./dist/angular-components"
-      ]
+      "@frankframework/angular-components": ["./dist/angular-components"]
     }
   },
   "angularCompilerOptions": {

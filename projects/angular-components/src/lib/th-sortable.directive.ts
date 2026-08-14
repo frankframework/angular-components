@@ -8,7 +8,7 @@ export type SortEvent = {
 
 export const compare = (v1: string | number, v2: string | number): 1 | -1 | 0 => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
-/** Non primitive types won't be covered correctly (null, undefined, object, etc), maybe this function should be extended at some point */
+/** Non-primitive types won't be covered correctly (null, undefined, object, etc), maybe this function should be extended at some point */
 export const anyCompare = <T>(v1: T, v2: T): 1 | -1 | 0 => (v1 < v2 ? -1 : v1 > v2 ? 1 : 0);
 
 export function updateSortableHeaders(headers: QueryList<ThSortableDirective>, column: string | number | symbol): void {
@@ -28,7 +28,7 @@ export function basicTableSort<T extends Record<string, string | number>>(
 
   if (direction == 'NONE' || column == '') return array;
 
-  return [...array].sort((a, b) => {
+  return [...array].toSorted((a, b) => {
     const order = compare(a[column], b[column]);
     return direction === 'ASC' ? order : -order;
   });
@@ -44,13 +44,14 @@ export function basicAnyValueTableSort<T>(
 
   if (direction == 'NONE' || column == '') return array;
 
-  return [...array].sort((a, b) => {
+  return [...array].toSorted((a, b) => {
     const order = anyCompare(a[column as keyof T], b[column as keyof T]);
     return direction === 'ASC' ? order : -order;
   });
 }
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'th[sortable]',
   standalone: true,
 })

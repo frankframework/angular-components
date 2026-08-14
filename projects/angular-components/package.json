@@ -1,6 +1,6 @@
 {
   "name": "@frankframework/angular-components",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "description": "A collection of reusable components designed for use in Frank!Framework projects",
   "author": "Vivy Booman",
   "license": "Apache-2.0",
@@ -24,7 +24,7 @@
     }
   },
   "peerDependencies": {
-    "@angular/core": "^20.3.15 || ^21.0.0",
-    "@angular/cdk": "^20.2.14 || ^21.0.0"
+    "@angular/core": "^22.1.1 || ^23.0.0",
+    "@angular/cdk": "^22.1.1 || ^23.0.0"
   }
 }

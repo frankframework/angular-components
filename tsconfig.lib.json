@@ -2,11 +2,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/spec",
-    "types": ["vitest/globals"]
+    "outDir": "./out-tsc/lib",
+    "declaration": true,
+    "inlineSources": true,
+    "types": []
   },
-  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"],
   "angularCompilerOptions": {
+    "compilationMode": "partial",
     "extendedDiagnostics": {
       "checks": {
         "nullishCoalescingNotNullable": "suppress",

@@ -20,7 +20,8 @@ export class ChipComponent {
       this._colour = value.slice(1);
       this.bgColour = this.calculateBackgroundColour(this._colour);
       return;
-    } else if (value) {
+    }
+    if (value) {
       this.bgColour = this.calculateBackgroundColour(value);
     }
     this._colour = value;
