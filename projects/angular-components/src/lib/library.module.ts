@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AutoFocusDirective } from './auto-focus.directive';
 import { ButtonComponent } from './button/button.component';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
@@ -19,6 +20,7 @@ const components = [
   DtContentDirective,
   CollapseDirective,
   ThSortableDirective,
+  AutoFocusDirective,
 ];
 
 @NgModule({
