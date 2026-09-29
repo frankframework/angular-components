@@ -3,9 +3,10 @@
   <input
     class="w-[18px] h-[18px] border border-solid border-[#B2B2B2] rounded accent-active"
     type="checkbox"
-    [disabled]="disabled"
-    [ffAutoFocus]="autofocus"
-    [(ngModel)]="checked"
-    (ngModelChange)="_onChange(this.checked)"
+    [disabled]="disabled()"
+    [ffAutoFocus]="autofocus()"
+    [ngModel]="checked()"
+    (ngModelChange)="_onChange(this.checked())"
+    (blur)="_onBlur()"
   />
 </label>

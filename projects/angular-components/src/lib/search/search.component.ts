@@ -10,7 +10,7 @@ import {
   OnDestroy,
   OnInit,
   AfterViewInit,
-  ViewChild,
+  ViewChild, input,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { IconMagnifierComponent } from '../icons/icon-magnifier/icon-magnifier.component';
@@ -34,13 +34,13 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
-  @Input() placeholder = 'Search...';
-  @Input() focusKey = '/';
-  @Input({ transform: booleanAttribute }) autofocus = false;
-  @Input({ transform: booleanAttribute }) forceFocus = false;
-  @Input({ transform: booleanAttribute }) focusKeyEnabled = true;
-  @Input({ transform: booleanAttribute }) slim = false;
-  @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
+  @ViewChild('input') public _inputElement!: ElementRef<HTMLInputElement>;
+  public placeholder = input<string>('Search...');
+  public focusKey = input<string>('/');
+  public autofocus = input<boolean>(false);
+  public forceFocus = input<boolean>(false);
+  public focusKeyEnabled = input<boolean>(true);
+  public slim = input<boolean>(false);
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
@@ -74,8 +74,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
       this._onChange(value);
     });
     this.focusKeyUtil.updateConfig({
-      key: this.focusKey,
-      force: this.forceFocus,
+      key: this.focusKey(),
+      force: this.forceFocus(),
     });
   }
 
@@ -91,7 +91,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   ngOnDestroy(): void {
     this.searchSubject.complete();
 
-    if (this.focusKeyEnabled) {
+    if (this.focusKeyEnabled()) {
       this.focusKeyUtil?.disable();
     }
   }
@@ -113,7 +113,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   }
 
   protected _onBlur(): void {
-    Promise.resolve().then(() => {
+    setTimeout(() => {
       this._onTouched();
       this._changeDetectorRef.markForCheck();
     });
