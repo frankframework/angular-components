@@ -2,6 +2,7 @@ import { Directive, ElementRef, inject, AfterViewInit, Input, booleanAttribute }
 
 @Directive({
   selector: '[ffAutoFocus]',
+  standalone: true,
 })
 export class AutoFocusDirective implements AfterViewInit {
   @Input({ transform: booleanAttribute }) ffAutoFocus = false;

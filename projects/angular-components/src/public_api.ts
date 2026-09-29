@@ -10,6 +10,7 @@ export * from './lib/checkbox/checkbox.component';
 export * from './lib/collapse.directive';
 export * from './lib/th-sortable.directive';
 export * from './lib/datatable/dt-content.directive';
+export * from './lib/auto-focus.directive';
 
 // helper classes
 export * from './lib/icons/icon-base';
