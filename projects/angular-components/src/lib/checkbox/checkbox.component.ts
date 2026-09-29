@@ -1,4 +1,12 @@
-import { booleanAttribute, ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import {
+  booleanAttribute,
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  input,
+  Input,
+  linkedSignal
+} from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { noop } from 'rxjs';
 import { AutoFocusDirective } from '../auto-focus.directive';
@@ -18,17 +26,20 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
   providers: [FF_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input({ transform: booleanAttribute }) disabled = false;
-  @Input({ transform: booleanAttribute }) checked = false;
-  @Input({ transform: booleanAttribute }) autofocus = false;
-  @Input() colour = '#000';
+  public disabledInput = input<boolean>(false);
+  public checkedInput = input<boolean>(false);
+  public autofocus = input<boolean>(false);
+  public color = input<string>('#000');
   // @Input() backgroundColour: string = '#FDC300';
+
+  protected disabled = linkedSignal(() => this.disabledInput());
+  protected checked = linkedSignal(() => this.checkedInput());
 
   protected _onChange: (value: boolean) => void = noop;
   protected _onTouched: () => void = noop;
 
   writeValue(value: unknown): void {
-    this.checked = value as boolean;
+    this.checked.set(value as boolean);
   }
 
   registerOnChange(function_: never): void {
@@ -40,11 +51,11 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+    this.disabled.set(isDisabled);
   }
 
   protected _onBlur(): void {
-    Promise.resolve().then(() => this._onTouched());
+    setTimeout(() => this._onTouched());
   }
 
   protected _onClick(event: MouseEvent): void {

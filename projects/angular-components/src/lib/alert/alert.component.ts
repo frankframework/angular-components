@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { IconInfoCircleComponent } from '../icons/icon-info-circle/icon-info-circle.component';
 import { IconWarningCircleComponent } from '../icons/icon-warning-circle/icon-warning-circle.component';
 import { IconSuccessCircleComponent } from '../icons/icon-success-circle/icon-success-circle.component';
@@ -26,6 +26,6 @@ export type AlertType = (typeof ALERT_TYPES)[keyof typeof ALERT_TYPES];
   templateUrl: './alert.component.html',
 })
 export class AlertComponent {
-  @Input() type: AlertType = ALERT_TYPES.WARNING;
+  public type = input<AlertType>(ALERT_TYPES.WARNING);
   protected iconSize = 18;
 }
