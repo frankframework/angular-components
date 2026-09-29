@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableColumn, DataTableDataSource, LibraryModule } from '@frankframework/angular-components';
-import { SvgAddIconComponent } from './svg-add-icon/svg-add-icon.component';
+import { SolarAddCircleLinear } from '@solar-icons/angular';
 import { FormsModule } from '@angular/forms';
 
 type TableData = {
@@ -11,7 +11,7 @@ type TableData = {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, LibraryModule, SvgAddIconComponent],
+  imports: [FormsModule, LibraryModule, SolarAddCircleLinear],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
