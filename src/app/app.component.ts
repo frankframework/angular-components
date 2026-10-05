@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableColumn, DataTableDataSource, LibraryModule } from '@frankframework/angular-components';
-import { SolarAddCircleLinear } from '@solar-icons/angular';
 import { FormsModule } from '@angular/forms';
+import { SolarAddCircleLinear } from '@solar-icons/angular';
 
 type TableData = {
   title: string;

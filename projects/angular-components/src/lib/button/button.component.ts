@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, linkedSignal, output } from '@angular/core';
+import { booleanAttribute, Component, input, linkedSignal, output } from '@angular/core';
 import { AutoFocusDirective } from '../auto-focus.directive';
 
 @Component({
@@ -9,10 +9,10 @@ import { AutoFocusDirective } from '../auto-focus.directive';
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
-  public disabled = input<boolean>(false);
-  public toggleable = input<boolean>(false);
-  public autofocus = input<boolean>(false);
-  public activeInput = input<boolean>(false);
+  public disabled = input<boolean>(false, { transform: booleanAttribute });
+  public toggleable = input<boolean>(false, { transform: booleanAttribute });
+  public autofocus = input<boolean>(false, { transform: booleanAttribute });
+  public activeInput = input<boolean>(false, { transform: booleanAttribute });
   public activeChange = output<boolean>();
 
   protected active = linkedSignal(() => this.activeInput());

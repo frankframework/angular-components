@@ -37,10 +37,10 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   @ViewChild('input') public _inputElement!: ElementRef<HTMLInputElement>;
   public placeholder = input<string>('Search...');
   public focusKey = input<string>('/');
-  public autofocus = input<boolean>(false);
-  public forceFocus = input<boolean>(false);
-  public focusKeyEnabled = input<boolean>(true);
-  public slim = input<boolean>(false);
+  public autofocus = input<boolean>(false, { transform: booleanAttribute });
+  public forceFocus = input<boolean>(false, { transform: booleanAttribute });
+  public focusKeyEnabled = input<boolean>(true, { transform: booleanAttribute });
+  public slim = input<boolean>(false, { transform: booleanAttribute });
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;

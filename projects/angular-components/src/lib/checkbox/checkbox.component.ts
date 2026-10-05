@@ -26,9 +26,9 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
   providers: [FF_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  public disabledInput = input<boolean>(false);
-  public checkedInput = input<boolean>(false);
-  public autofocus = input<boolean>(false);
+  public disabledInput = input<boolean>(false, { transform: booleanAttribute });
+  public checkedInput = input<boolean>(false, { transform: booleanAttribute });
+  public autofocus = input<boolean>(false, { transform: booleanAttribute });
   public color = input<string>('#000');
   // @Input() backgroundColour: string = '#FDC300';
 
