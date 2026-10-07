@@ -1,13 +1,14 @@
 import {
   Directive,
   HostListener,
-  Input,
   booleanAttribute,
-  Output,
-  EventEmitter,
   AfterViewInit,
   inject,
   Renderer2,
+  input,
+  numberAttribute,
+  output,
+  linkedSignal,
 } from '@angular/core';
 
 @Directive({
@@ -16,10 +17,12 @@ import {
   standalone: true,
 })
 export class CollapseDirective implements AfterViewInit {
-  @Input({ required: true }) collapse!: HTMLElement;
-  @Input({ transform: booleanAttribute }) collapsed = false;
-  @Input() animationSpeed = 300;
-  @Output() collapsedChange = new EventEmitter<boolean>();
+  public collapse: HTMLElement = input.required<HTMLElement>();
+  public collapsedInput = input(false, { transform: booleanAttribute });
+  public animationSpeed = input(300, { transform: numberAttribute });
+  public collapsedChange = output<boolean>();
+
+  protected collapsed = linkedSignal(() => this.collapsedInput());
 
   private collapseAnimation: Animation | null = null;
   private clientHeight = 0;
@@ -27,8 +30,9 @@ export class CollapseDirective implements AfterViewInit {
 
   @HostListener('click')
   onClick(): void {
-    this.collapsed = !this.collapsed;
-    this.collapsedChange.emit(this.collapsed);
+    const collapsed = !this.collapsed();
+    this.collapsed.set(collapsed);
+    this.collapsedChange.emit(collapsed);
     this.updateState();
   }
 
@@ -42,7 +46,7 @@ export class CollapseDirective implements AfterViewInit {
       return;
     }
 
-    if (this.collapsed) {
+    if (this.collapsed()) {
       this.clientHeight = this.collapse.clientHeight;
       this.collapseElement();
     } else {
@@ -63,7 +67,7 @@ export class CollapseDirective implements AfterViewInit {
     this.collapse.classList.add('transforming');
     this.collapseAnimation = this.collapse.animate(
       { height: [`${this.clientHeight}px`, '0px'] },
-      { duration: this.animationSpeed, easing: 'ease-in-out' },
+      { duration: this.animationSpeed(), easing: 'ease-in-out' },
     );
     this.collapseAnimation.finished
       .then(() => {
@@ -78,7 +82,7 @@ export class CollapseDirective implements AfterViewInit {
   private expandElement(): void {
     this.collapseAnimation = this.collapse.animate(
       { height: ['0px', `${this.clientHeight}px`] },
-      { duration: this.animationSpeed, easing: 'ease-in-out' },
+      { duration: this.animationSpeed(), easing: 'ease-in-out' },
     );
     this.collapseAnimation.finished
       .then(() => {
