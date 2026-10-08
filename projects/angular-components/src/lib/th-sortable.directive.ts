@@ -57,24 +57,22 @@ export function basicAnyValueTableSort<T>(
 })
 export class ThSortableDirective {
   public columnName = input<string>('');
-  public directionInput = input<SortDirection>('NONE');
+  public direction = input<SortDirection>('NONE');
   public sorted = output<SortEvent>();
 
-  protected direction = linkedSignal<SortDirection>(() => this.directionInput());
+  protected currentDirection = linkedSignal<SortDirection>(() => this.direction());
 
   private elementReference: ElementRef<HTMLTableCellElement> = inject(ElementRef);
   private THElement = this.elementReference.nativeElement;
 
   @HostListener('click') nextSort(): void {
-    this.updateDirection(this.nextSortOption(this.direction()));
-    this.sorted.emit({ column: this.columnName(), direction: this.direction() });
+    this.updateDirection(this.nextSortOption(this.currentDirection()));
+    this.sorted.emit({ column: this.columnName(), direction: this.currentDirection() });
   }
 
   updateIcon(direction: SortDirection): void {
     const icon = this.THElement.querySelector('span.sort-icon');
-    if (icon) {
-      icon.remove();
-    }
+    if (icon) icon.remove();
     if (direction === 'NONE') return;
     const iconElement = document.createElement('span');
     iconElement.classList.add('sort-icon');
@@ -83,7 +81,7 @@ export class ThSortableDirective {
   }
 
   updateDirection(newDirection: SortDirection): void {
-    this.direction.set(newDirection);
+    this.currentDirection.set(newDirection);
     this.updateIcon(newDirection);
   }
 

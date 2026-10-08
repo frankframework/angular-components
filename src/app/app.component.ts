@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { DataTableColumn, DataTableDataSource, LibraryModule } from '@frankframework/angular-components';
 import { FormsModule } from '@angular/forms';
 import { SolarAddCircleLinear } from '@solar-icons/angular';
@@ -14,6 +14,7 @@ type TableData = {
   imports: [FormsModule, LibraryModule, SolarAddCircleLinear],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class AppComponent implements OnInit {
   protected searchText = '';

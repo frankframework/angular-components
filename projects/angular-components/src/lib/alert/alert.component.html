@@ -1,25 +1,19 @@
-@let currentType = type();
 <div
   class="ff-alert flex w-full px-5 py-3 border-t border-r border-b border-l-6 border-solid rounded-md items-center justify-center gap-2 text-base font-semibold"
-  [ngClass]="{
-    'ff-alert-info': currentType === 'info',
-    'ff-alert-success': currentType === 'success',
-    'ff-alert-warning': currentType === 'warning',
-    'ff-alert-error': currentType === 'error',
-  }"
+  [ngClass]="className()"
 >
-  @switch (currentType) {
+  @switch (type()) {
     @case ('info') {
-      <ff-icon-info-circle class="icon" colour="#037CD4" [width]="iconSize" [height]="iconSize" />
+      <svg solarInfoCircle color="#037CD4" [size]="iconSize" />
     }
     @case ('success') {
-      <ff-icon-success-circle class="icon" colour="#00d841" [width]="iconSize" [height]="iconSize" />
+      <svg solarCheckCircle color="#00d841" [size]="iconSize" />
     }
     @case ('error') {
-      <ff-icon-error-circle class="icon" colour="#DA0004" [width]="iconSize" [height]="iconSize" />
+      <svg solarCloseCircle color="#DA0004" [size]="iconSize" />
     }
     @default {
-      <ff-icon-warning-circle class="icon" colour="#d89400" [width]="iconSize" [height]="iconSize" />
+      <svg solarDangerCircle color="#d89400" [size]="iconSize" />
     }
   }
   <span class="flex-[1_1_100%]"><ng-content /></span>

@@ -26,20 +26,20 @@ export const FF_CHECKBOX_CONTROL_VALUE_ACCESSOR = {
   providers: [FF_CHECKBOX_CONTROL_VALUE_ACCESSOR],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  public disabledInput = input<boolean>(false, { transform: booleanAttribute });
-  public checkedInput = input<boolean>(false, { transform: booleanAttribute });
+  public disabled = input<boolean>(false, { transform: booleanAttribute });
+  public checked = input<boolean>(false, { transform: booleanAttribute });
   public autofocus = input<boolean>(false, { transform: booleanAttribute });
   public color = input<string>('#000');
   // @Input() backgroundColour: string = '#FDC300';
 
-  protected disabled = linkedSignal(() => this.disabledInput());
-  protected checked = linkedSignal(() => this.checkedInput());
+  protected isDisabled = linkedSignal(() => this.disabled());
+  protected isChecked = linkedSignal(() => this.checked());
 
   protected _onChange: (value: boolean) => void = noop;
   protected _onTouched: () => void = noop;
 
   writeValue(value: unknown): void {
-    this.checked.set(value as boolean);
+    this.isChecked.set(value as boolean);
   }
 
   registerOnChange(function_: never): void {
@@ -51,7 +51,12 @@ export class CheckboxComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled.set(isDisabled);
+    this.isDisabled.set(isDisabled);
+  }
+
+  protected updateValue(value: boolean): void {
+    this.isChecked.set(value);
+    this._onChange(value);
   }
 
   protected _onBlur(): void {

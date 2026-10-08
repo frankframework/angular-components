@@ -12,18 +12,18 @@ export class ButtonComponent {
   public disabled = input<boolean>(false, { transform: booleanAttribute });
   public toggleable = input<boolean>(false, { transform: booleanAttribute });
   public autofocus = input<boolean>(false, { transform: booleanAttribute });
-  public activeInput = input<boolean>(false, { transform: booleanAttribute });
+  public active = input<boolean>(false, { transform: booleanAttribute });
   public activeChange = output<boolean>();
 
-  protected active = linkedSignal(() => this.activeInput());
+  protected isActive = linkedSignal(() => this.active());
 
   protected toggle(): void {
     if (!this.toggleable() || this.disabled()) {
       return;
     }
 
-    const active = !this.active();
-    this.active.set(active);
+    const active = !this.isActive();
+    this.isActive.set(active);
     this.activeChange.emit(active);
   }
 }

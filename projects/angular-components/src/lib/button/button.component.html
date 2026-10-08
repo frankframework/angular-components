@@ -1,7 +1,7 @@
 <button
   class="ff-button-button"
   [disabled]="disabled()"
-  [ngClass]="{ active: active() }"
+  [class.active]="isActive()"
   [ffAutoFocus]="autofocus()"
   (click)="toggle()"
 >
