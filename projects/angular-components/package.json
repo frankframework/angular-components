@@ -25,6 +25,7 @@
   },
   "peerDependencies": {
     "@angular/core": "^22.1.1 || ^23.0.0",
-    "@angular/cdk": "^22.1.1 || ^23.0.0"
+    "@angular/cdk": "^22.1.1 || ^23.0.0",
+    "@solar-icons/angular": "^2.3.2"
   }
 }

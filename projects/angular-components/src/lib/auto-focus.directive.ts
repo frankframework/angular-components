@@ -1,15 +1,15 @@
-import { Directive, ElementRef, inject, AfterViewInit, Input, booleanAttribute } from '@angular/core';
+import { Directive, ElementRef, inject, AfterViewInit, booleanAttribute, input } from '@angular/core';
 
 @Directive({
   selector: '[ffAutoFocus]',
   standalone: true,
 })
 export class AutoFocusDirective implements AfterViewInit {
-  @Input({ transform: booleanAttribute }) ffAutoFocus = false;
+  public ffAutoFocus = input<boolean>(false, { transform: booleanAttribute });
   private element: ElementRef = inject(ElementRef);
 
   ngAfterViewInit(): void {
-    if (this.ffAutoFocus) {
+    if (this.ffAutoFocus()) {
       this.element.nativeElement.focus();
     }
   }

@@ -1,6 +1,6 @@
 <span
   class="ff-chip inline-block"
   [ngStyle]="calculateColours()"
-  [ngClass]="{ 'ff-chip-rounded': rounded, 'ff-chip-slim': slim }"
+  [ngClass]="{ 'ff-chip-rounded': rounded(), 'ff-chip-slim': slim() }"
   ><ng-content
 /></span>
