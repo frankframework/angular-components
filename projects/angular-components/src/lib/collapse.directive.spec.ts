@@ -5,7 +5,9 @@ import { By } from '@angular/platform-browser';
 
 @Component({
   template: ``,
-  imports: [/*CollapseDirective*/],
+  imports: [
+    /*CollapseDirective*/
+  ],
 })
 class TestComponent {}
 

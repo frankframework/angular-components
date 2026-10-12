@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, input, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
@@ -8,8 +8,8 @@ import { NgClass, NgStyle } from '@angular/common';
   templateUrl: './chip.component.html',
 })
 export class ChipComponent {
-  public rounded = input<boolean>(false, { transform: booleanAttribute });
-  public slim = input<boolean>(false, { transform: booleanAttribute });
+  public rounded = input<boolean>(false);
+  public slim = input<boolean>(false);
 
   private bgColour = 'rgb(0, 0, 0)';
   private _colour?: string;
