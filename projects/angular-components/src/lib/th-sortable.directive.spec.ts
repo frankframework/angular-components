@@ -55,9 +55,9 @@ describe('ThSortableDirective', () => {
     directiveElements[0].nativeElement.click();
     const directiveInstance = directiveElements[0].injector.get(ThSortableDirective);
 
-    expect(directiveInstance.direction).toBe('ASC');
+    expect(directiveInstance.currentDirection).toBe('ASC');
     directiveElements[0].nativeElement.click();
-    expect(directiveInstance.direction).toBe('DESC');
+    expect(directiveInstance.currentDirection).toBe('DESC');
   });
 
   it('sorts table rows', () => {
@@ -67,28 +67,28 @@ describe('ThSortableDirective', () => {
     const directive1Element = directiveElements[1].nativeElement;
 
     directive0Element.click();
-    expect(directive0Instance.direction).toBe('ASC');
+    expect(directive0Instance.currentDirection).toBe('ASC');
     expect(fixture.componentInstance.items[0]).toEqual({
       name: 'a',
       value: 2,
     });
 
     directive0Element.click();
-    expect(directive0Instance.direction).toBe('DESC');
+    expect(directive0Instance.currentDirection).toBe('DESC');
     expect(fixture.componentInstance.items[0]).toEqual({
       name: 'b',
       value: 1,
     });
 
     directive1Element.click();
-    expect(directive1Instance.direction).toBe('ASC');
+    expect(directive1Instance.currentDirection).toBe('ASC');
     expect(fixture.componentInstance.items[0]).toEqual({
       name: 'b',
       value: 1,
     });
 
     directive1Element.click();
-    expect(directive1Instance.direction).toBe('DESC');
+    expect(directive1Instance.currentDirection).toBe('DESC');
     expect(fixture.componentInstance.items[0]).toEqual({
       name: 'a',
       value: 2,

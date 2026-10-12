@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EventEmitter, HostListener, inject, Input, Output, QueryList } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, input, linkedSignal, output, QueryList } from '@angular/core';
 
 export type SortDirection = 'ASC' | 'DESC' | 'NONE';
 export type SortEvent = {
@@ -13,7 +13,7 @@ export const anyCompare = <T>(v1: T, v2: T): 1 | -1 | 0 => (v1 < v2 ? -1 : v1 > 
 
 export function updateSortableHeaders(headers: QueryList<ThSortableDirective>, column: string | number | symbol): void {
   for (const header of headers) {
-    if (header.columnName !== column) {
+    if (header.columnName() !== column) {
       header.updateDirection('NONE');
     }
   }
@@ -56,23 +56,23 @@ export function basicAnyValueTableSort<T>(
   standalone: true,
 })
 export class ThSortableDirective {
-  @Input() columnName = '';
-  @Input() direction: SortDirection = 'NONE';
-  @Output() sorted = new EventEmitter<SortEvent>();
+  public columnName = input<string>('');
+  public direction = input<SortDirection>('NONE');
+  public sorted = output<SortEvent>();
+
+  protected currentDirection = linkedSignal<SortDirection>(() => this.direction());
 
   private elementReference: ElementRef<HTMLTableCellElement> = inject(ElementRef);
   private THElement = this.elementReference.nativeElement;
 
   @HostListener('click') nextSort(): void {
-    this.updateDirection(this.nextSortOption(this.direction));
-    this.sorted.emit({ column: this.columnName, direction: this.direction });
+    this.updateDirection(this.nextSortOption(this.currentDirection()));
+    this.sorted.emit({ column: this.columnName(), direction: this.currentDirection() });
   }
 
   updateIcon(direction: SortDirection): void {
     const icon = this.THElement.querySelector('span.sort-icon');
-    if (icon) {
-      icon.remove();
-    }
+    if (icon) icon.remove();
     if (direction === 'NONE') return;
     const iconElement = document.createElement('span');
     iconElement.classList.add('sort-icon');
@@ -81,8 +81,8 @@ export class ThSortableDirective {
   }
 
   updateDirection(newDirection: SortDirection): void {
-    this.direction = newDirection;
-    this.updateIcon(this.direction);
+    this.currentDirection.set(newDirection);
+    this.updateIcon(newDirection);
   }
 
   private nextSortOption(sortOption: SortDirection): SortDirection {

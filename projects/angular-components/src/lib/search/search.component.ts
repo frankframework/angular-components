@@ -11,13 +11,14 @@ import {
   OnInit,
   AfterViewInit,
   ViewChild,
+  input,
 } from '@angular/core';
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IconMagnifierComponent } from '../icons/icon-magnifier/icon-magnifier.component';
 import { debounceTime, noop, Subject } from 'rxjs';
 import { NgClass } from '@angular/common';
 import { FocusOnKeyUtil as FocusOnKeyUtility } from '../utils/focus-on-key.util';
 import { AutoFocusDirective } from '../auto-focus.directive';
+import { SolarMagnifier } from '@solar-icons/angular';
 
 export const SEARCH_CONTROL_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -28,19 +29,19 @@ export const SEARCH_CONTROL_VALUE_ACCESSOR = {
 @Component({
   selector: 'ff-search',
   standalone: true,
-  imports: [FormsModule, NgClass, IconMagnifierComponent, AutoFocusDirective],
+  imports: [FormsModule, NgClass, AutoFocusDirective, SolarMagnifier],
   templateUrl: './search.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SEARCH_CONTROL_VALUE_ACCESSOR],
 })
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, ControlValueAccessor {
-  @Input() placeholder = 'Search...';
-  @Input() focusKey = '/';
-  @Input({ transform: booleanAttribute }) autofocus = false;
-  @Input({ transform: booleanAttribute }) forceFocus = false;
-  @Input({ transform: booleanAttribute }) focusKeyEnabled = true;
-  @Input({ transform: booleanAttribute }) slim = false;
-  @ViewChild('input') _inputElement!: ElementRef<HTMLInputElement>;
+  @ViewChild('input') public _inputElement!: ElementRef<HTMLInputElement>;
+  public placeholder = input<string>('Search...');
+  public focusKey = input<string>('/');
+  public autofocus = input<boolean>(false, { transform: booleanAttribute });
+  public forceFocus = input<boolean>(false, { transform: booleanAttribute });
+  public focusKeyEnabled = input<boolean>(true, { transform: booleanAttribute });
+  public slim = input<boolean>(false, { transform: booleanAttribute });
 
   protected _onChange: (value: string) => void = noop;
   protected _onTouched: () => void = noop;
@@ -74,16 +75,13 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
       this._onChange(value);
     });
     this.focusKeyUtil.updateConfig({
-      key: this.focusKey,
-      force: this.forceFocus,
+      key: this.focusKey(),
+      force: this.forceFocus(),
     });
   }
 
   ngAfterViewInit(): void {
-    if (!this.focusKeyEnabled) {
-      return;
-    }
-
+    if (!this.focusKeyEnabled()) return;
     this.focusKeyUtil.setFocusElement(this._inputElement.nativeElement);
     this.focusKeyUtil.enable();
   }
@@ -91,7 +89,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   ngOnDestroy(): void {
     this.searchSubject.complete();
 
-    if (this.focusKeyEnabled) {
+    if (this.focusKeyEnabled()) {
       this.focusKeyUtil?.disable();
     }
   }
@@ -113,7 +111,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy, Contro
   }
 
   protected _onBlur(): void {
-    Promise.resolve().then(() => {
+    setTimeout(() => {
       this._onTouched();
       this._changeDetectorRef.markForCheck();
     });

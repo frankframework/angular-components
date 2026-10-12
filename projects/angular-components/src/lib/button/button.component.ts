@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, EventEmitter, Input, Output } from '@angular/core';
+import { booleanAttribute, Component, input, linkedSignal, output } from '@angular/core';
 import { AutoFocusDirective } from '../auto-focus.directive';
 
 @Component({
@@ -9,18 +9,21 @@ import { AutoFocusDirective } from '../auto-focus.directive';
   templateUrl: './button.component.html',
 })
 export class ButtonComponent {
-  @Input({ transform: booleanAttribute }) disabled = false;
-  @Input({ transform: booleanAttribute }) toggleable = false;
-  @Input({ transform: booleanAttribute }) active = false;
-  @Input({ transform: booleanAttribute }) autofocus = false;
-  @Output() activeChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public disabled = input<boolean>(false, { transform: booleanAttribute });
+  public toggleable = input<boolean>(false, { transform: booleanAttribute });
+  public autofocus = input<boolean>(false, { transform: booleanAttribute });
+  public active = input<boolean>(false, { transform: booleanAttribute });
+  public activeChange = output<boolean>();
+
+  protected isActive = linkedSignal(() => this.active());
 
   protected toggle(): void {
-    if (!this.toggleable || this.disabled) {
+    if (!this.toggleable() || this.disabled()) {
       return;
     }
 
-    this.active = !this.active;
-    this.activeChange.emit(this.active);
+    const active = !this.isActive();
+    this.isActive.set(active);
+    this.activeChange.emit(active);
   }
 }
